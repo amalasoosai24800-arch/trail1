@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elegans || Contact</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --gold: #d9ac47; --bg: #000; --card: #111; }
+
+  body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    background:var(--bg);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  .fullcontact{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top:120px;
+    padding-bottom:40px;
+  }
+
+  /* ===== container & panels ===== */
+  .container {
+    width:90%;
+    max-width:1150px;
+    display:flex;
+    background:var(--card);
+    border:1px solid #333;
+    box-shadow:0 0 20px rgba(255,215,0,0.12);
+    border-radius:20px;
+    overflow:hidden;
+    transition: transform 0.35s cubic-bezier(.22,.9,.3,1.15);
+  will-change: transform;
+
+    /* initial (wrapped/off-screen) state */
+    opacity:0;
+    transform: translateX(-320px) translateY(18px) rotateZ(-1.2deg) scale(0.96);
+    transition:
+      opacity 420ms ease,
+      transform 900ms cubic-bezier(.22,.9,.3,1.15),
+      box-shadow 300ms ease;
+    will-change: transform, opacity;
+  }
+
+  /* when unwrapped / shown */
+  .container.unwrap {
+    opacity:1;
+    transform: translateX(0) translateY(0) rotateZ(0) scale(1);
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.35),
+      0 0 28px rgba(217,172,71,0.12);
+  }
+
+  /* wrap back (same as base) - we rely on removing .unwrap */
+
+  /* LEFT */
+  .left{
+    width:50%;
+    padding:40px;
+    background: #000;
+  }
+
+  .left h2 { font-size:34px; margin-bottom:18px; letter-spacing:1px; color:var(--gold); }
+
+  label{ display:block; margin-top:16px; font-size:14px; color:#eee; font-weight:500; }
+
+  input, textarea{
+    width:100%;
+    padding:14px;
+    margin-top:8px;
+    background:#181818;
+    border:1px solid #444;
+    color:white;
+    border-radius:8px;
+    outline:none;
+    transition:.28s;
+  }
+  input:focus, textarea:focus { border-color:var(--gold); box-shadow:0 0 6px var(--gold); }
+  textarea{ height:120px; resize:none; }
+
+  button{
+    margin-top:22px; width:100%; padding:14px; border:none;
+    background:var(--gold); color:#000; font-size:16px; border-radius:10px;
+    cursor:pointer; font-weight:600; transition:.24s;
+  }
+  button:hover{ color:var(--gold); transform:translateY(-2px); }
+
+  /* RIGHT */
+  .right{ width:50%; position:relative; padding:40px;
+    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.7)), url('/eglow.png') center/cover no-repeat;
+  }
+  .info-box{
+    background: rgba(0,0,0,0.55); padding:20px; border-radius:12px; border-left:4px solid var(--gold);
+    margin-bottom:18px;
+  }
+  .info-box h3{ margin:0; font-size:18px; color:var(--gold); }
+  .info-box p{ margin:8px 0 0; color:#d8d8d8; line-height:1.45; }
+
+  /* loading + popup */
+  #loading{ display:none; width:35px; height:35px; border:4px solid #444; border-top:4px solid var(--gold); border-radius:50%; animation:spin 1s linear infinite; margin:14px auto; }
+  @keyframes spin { 100%{ transform:rotate(360deg); } }
+
+  #successPopup{
+    position:fixed; left:50%; top:50%; transform:translate(-50%,-50%) scale(.85);
+    background: #111; color:#fff; padding:28px 34px; border-radius:12px; border:1px solid var(--gold);
+    opacity:0; pointer-events:none; transition: all .28s ease; z-index:9999;
+  }
+  #successPopup.active{ opacity:1; pointer-events:auto; transform:translate(-50%,-50%) scale(1); }
+
+  /* ===== wave reveal items (they will animate every time container unwraps) ===== */
+  .wave-reveal {
+    opacity:0;
+    transform: translateX(-140px) skewX(-4deg) scale(.98);
+    filter: blur(3px);
+    transition:
+      opacity 520ms ease-out,
+      transform 760ms cubic-bezier(.17,.89,.32,1.12),
+      filter 520ms ease;
+    will-change: transform, opacity;
+  }
+
+  /* when container unwraps we add .show to each .wave-reveal (see JS) */
+  .wave-reveal.show { opacity:1; transform: translateX(0) skewX(0) scale(1); filter: blur(0); }
+
+  /* small responsive */
+  @media (max-width:900px){
+    .container{ flex-direction:column; transform-origin:center top; }
+    .left,.right{ width:100%; padding:26px; }
+    .fullcontact{ padding-top:40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header" style="position:fixed; left:0; right:0; top:0; height:70px; display:flex; align-items:center; padding:0 20px; background:rgba(0,0,0,0.2); z-index:20;">
+  <div class="logo"><img src="image/logo_elegans.png" alt="Logo" style="height:36px;"></div>
+  <div style="margin-left:auto;">
+    <button id="closeBtnn" style="background:transparent;border:0;color:#fff;cursor:pointer;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6 L18 18 M18 6 L6 18" stroke="white" stroke-width="2.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="fullcontact" style="padding-top:120px;">
+  <div class="container" id="contactContainer">
+
+    <div class="left">
+      <h2 class="wave-reveal">Contact Us</h2>
+
+      <form id="contactForm" action="https://formsubmit.co/contact@elegansinc.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New Contact Form Submission - Elegans Website">
+        <input type="hidden" name="_autoresponse" value="Thank you for contacting Elegans. Our team will reach you soon!">
+
+        <label class="wave-reveal">Name</label>
+        <input class="wave-reveal" type="text" id="name" name="Name" required>
+
+        <label class="wave-reveal">Email</label>
+        <input class="wave-reveal" type="email" id="email" name="Email" required>
+
+        <label class="wave-reveal">Phone</label>
+        <input class="wave-reveal" type="text" id="phone" name="Phone" required>
+
+        <label class="wave-reveal">Message</label>
+        <textarea class="wave-reveal" id="message" name="Message" required></textarea>
+
+        <div id="loading" class="wave-reveal"></div>
+
+        <button class="wave-reveal" type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="right">
+      <div class="info-box">
+        <h3>Our Office</h3>
+        <p>Elegans Branding Pvt Ltd,<br>B1, Janaki Building,<br>No.20, Sardar Patel Rd,<br>Next to GRT Jewellers,<br>Adyar, Chennai - 600020</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Mail Us</h3>
+        <p>contact@elegansinc.com</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Call Us</h3>
+        <p> +91 91767 88867</p>
+      </div>
+
+      <div class="info-box">
+        <h3><a href="https://www.google.com/maps/place/Elegans+Branding+Pvt+Ltd/@13.0064076,80.2512238,17z" target="_blank" style="color:var(--gold); text-decoration:none;">View Location</a></h3>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- success popup -->
+  <div id="successPopup"><h3>✔ Form Submitted Successfully!</h3><p>We will contact you soon.</p></div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+  // find container safely
+  const container = document.getElementById("contactContainer") || document.querySelector(".container");
+  if (!container) {
+    console.warn("Scroll animation: .container element not found. Aborting scroll animation.");
+    return;
+  }
+
+  // config
+  const MAX_TRANSLATE = 80;      // max px translate on fast scroll
+  const DAMPING = 0.08;         // inertia smoothing (0-1), lower = slower smoothing
+  const VELOCITY_FACTOR = 0.6;  // how much scroll delta affects velocity
+  const IDLE_RETURN_MS = 500;   // time to settle back after user stops scrolling
+
+  let lastScrollY = window.scrollY || 0;
+  let velocity = 0;   // target displacement from scroll input
+  let currentX = 0;   // actual applied displacement (for lerp)
+  let idleTimer = null;
+
+  // safety: clear any inline transform previously set (optional)
+  container.style.willChange = "transform";
+
+  // scroll listener - only updates velocity and timers (fast)
+  window.addEventListener("scroll", () => {
+    const nowY = window.scrollY || 0;
+    const delta = nowY - lastScrollY;
+    lastScrollY = nowY;
+
+    // increase velocity based on scroll delta
+    velocity += delta * VELOCITY_FACTOR;
+
+    // clamp velocity to avoid huge jumps
+    if (velocity > MAX_TRANSLATE) velocity = MAX_TRANSLATE;
+    if (velocity < -MAX_TRANSLATE) velocity = -MAX_TRANSLATE;
+
+    // clear idle timer and set again so container returns to 0 when scrolling stops
+    if (idleTimer) clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      // begin gradual return to zero
+      velocity *= 0.15;
+    }, IDLE_RETURN_MS);
+  }, { passive: true });
+
+  // animation loop with inertia (lerp)
+  function animate() {
+    // gradually interpolate currentX toward velocity
+    currentX += (velocity - currentX) * DAMPING;
+
+    // apply transform with gentle scale/rotation for "luxury" feel
+    const absX = Math.abs(currentX);
+    const scale = 1 - Math.min(absX / 1400, 0.04);   // small scale down with more movement
+    const rotate = -Math.sign(currentX) * Math.min(absX / 1800, 1.2); // subtle tilt
+
+    container.style.transform = `translateX(${currentX}px) translateY(${ -Math.sign(currentX) * (absX * 0.08) }px) scale(${scale}) rotateZ(${rotate}deg)`;
+
+    // slowly decay velocity toward 0 so it eases out even if no idle timer fires
+    velocity *= 0.96;
+
+    // small threshold to snap to zero and remove visual residue
+    if (Math.abs(velocity) < 0.02 && Math.abs(currentX) < 0.04) {
+      velocity = 0;
+      currentX = 0;
+      container.style.transform = ""; // remove inline transform so CSS can handle resting state
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  // start animation loop
+  requestAnimationFrame(animate);
+
+  // optional: react when window resizes (keeps logic robust)
+  window.addEventListener("resize", () => {
+    lastScrollY = window.scrollY || 0;
+  });
+});
+/* -------------------------
+  Form submit + UI
+--------------------------*/
+const form = document.getElementById("contactForm");
+const loading = document.getElementById("loading");
+const popup = document.getElementById("successPopup");
+const nameField = document.getElementById("name");
+const emailField = document.getElementById("email");
+const phoneField = document.getElementById("phone");
+const messageField = document.getElementById("message");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  if(!nameField.value.trim() || !emailField.value.trim() || !phoneField.value.trim() || !messageField.value.trim()){
+    alert("Please fill all fields");
+    return;
+  }
+
+  loading.style.display = "block";
+
+  setTimeout(()=>{
+    loading.style.display = "none";
+    popup.classList.add("active");
+    setTimeout(()=> popup.classList.remove("active"), 2400);
+
+    // actually submit to FormSubmit (this will navigate away)
+    form.submit();
+  }, 900);
+});
+
+/* close button */
+document.getElementById("closeBtnn").addEventListener("click", function(){
+  window.location.href = "index.html";
+});
+
+
+/* -------------------------
+  Wrap / Unwrap on every scroll in/out
+  - Single observer controls container unwrap/wrap
+  - When unwrap happens we also reveal inner .wave-reveal children with stagger
+  - When wrap happens we remove show so they'll re-animate next time
+--------------------------*/
+
+const container = document.getElementById("contactContainer");
+const waveItems = Array.from(container.querySelectorAll(".wave-reveal"));
+
+/*
+  Intersection options:
+  - rootMargin moves the trigger point (here we trigger a bit earlier)
+  - threshold: 0.35 means element considered visible when ~35% is in viewport.
+*/
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Unwrap (float in)
+      container.classList.add("unwrap");
+
+      // reveal inner items with stagger each time container unwraps
+      // first remove any existing .show (ensures clean restart)
+      waveItems.forEach(i => i.classList.remove("show"));
+
+      // stagger adding .show so items animate one-by-one
+      waveItems.forEach((el, idx) => {
+        const delay = idx * 80; // ms
+        setTimeout(() => el.classList.add("show"), delay);
+      });
+
+    } else {
+      // Wrap (float back) whenever container leaves viewport
+      container.classList.remove("unwrap");
+
+      // remove inner shows right away (so they will animate the next time)
+      waveItems.forEach(el => el.classList.remove("show"));
+    }
+  });
+}, {
+  root: null,
+  rootMargin: "0px 0px -10% 0px", // start wrapping/unwrapping slightly earlier/later
+  threshold: 0.35
+});
+
+
+
+
+io.observe(container);
+
+
+
+
+/* -------------------------
+ Notes:
+ - This approach guarantees the container unwraps every time it enters view
+ - When it leaves view it wraps back so the effect is replayable
+ - Stagger timing can be changed (idx*80) to taste
+--------------------------*/
+</script>
+
+</body>
+</html>
