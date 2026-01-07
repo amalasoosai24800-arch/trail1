@@ -27,7 +27,7 @@ header{
 }
 .btn-talk:hover{ box-shadow:0 0 20px #d7ac47; }
 .menu-btn {
-  background:none; border:none; color:#fff; font-size:16px; cursor:pointer;
+  background:none; border:none; color:#fff; font-size:16px; cursor:pointer;font-weight: 600;
   display:flex; align-items:center; gap:8px; transition:0.4s;
 }
 
@@ -62,6 +62,36 @@ header{
   font-size:70px; font-weight:700; color:#fff; overflow:hidden; white-space:nowrap;
 }
 .hero-text h1 span{ display:inline-block; }
+
+
+/* ================= RESPONSIVE ================= */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .hero-text h1 {
+    font-size: 50px;
+  }
+}
+
+/* Small screens (mobiles) */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 36px;
+    white-space: normal; /* allow text to wrap on mobile */
+    line-height: 1.2;
+  }
+
+  .hero-text {
+    padding: 0 20px; /* avoid text touching edges */
+  }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 28px;
+  }
+}
 
 
 
@@ -194,11 +224,7 @@ header{
 
 
 
-/* ================= NEXT SECTION ================= */
-.next-section{
-  height:100vh; display:flex; justify-content:center; align-items:center;
-  font-size:50px; text-align:center;
-}
+
 
 /* ================= RESPONSIVE ================= */
 @media (max-width:1024px){
@@ -240,7 +266,7 @@ header{
   border:1px solid rgba(255,255,255,.06);
   font-size:22px;
   letter-spacing:.05em;
-  color:#888;
+  color:#fff;
   cursor:pointer;
   transition:.45s cubic-bezier(.16,1,.3,1);
   transform-style:preserve-3d;
@@ -321,6 +347,82 @@ header{
   color:#111;
 }
 
+/* ================= RESPONSIVE ================= */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .service-grid {
+    grid-template-columns: 1fr; /* Stack columns */
+    gap: 40px;
+  }
+
+  .service-video-frame {
+    height: 400px;
+  }
+
+  .service-card {
+    min-width: 180px;
+    font-size: 20px;
+    padding: 16px 20px;
+  }
+
+  .tabs {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}
+
+/* Small screens (mobiles) */
+@media (max-width: 768px) {
+  .service-cards {
+    gap: 20px;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  #serviceTitle {
+    font-size: clamp(40px, 8vw, 70px);
+  }
+
+  .service-video-frame {
+    height: 300px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .curve-btn {
+    font-size: 12px;
+    padding: 12px 28px;
+  }
+}
+
+/* Extra small screens (small phones) */
+@media (max-width: 480px) {
+  .service-card {
+    font-size: 18px;
+    padding: 12px 16px;
+  }
+
+  #serviceTitle {
+    font-size: clamp(32px, 7vw, 50px);
+  }
+
+  .service-video-frame {
+    height: 220px;
+  }
+
+  .tabs {
+    gap: 10px;
+  }
+
+  .curve-btn {
+    padding: 10px 20px;
+    font-size: 11px;
+  }
+}
 
 /* ================================================= */
 /*                 WORK SHOWCASE                     */
@@ -328,17 +430,13 @@ header{
 
 .work-section{
   max-width:1400px;
-  margin:90px auto;
+  margin:30px auto;
   padding-inline:20px;
 }
 
-/*.work-header{
-  max-width:680px;
-  margin-bottom:80px;
-}*/
-
 .work-header h2{
-  font-size:clamp(38px,5vw,64px);
+  font-size:60px;
+  font-weight: 600;
   line-height:1.05;
   margin-bottom:45px;
   color: #d7ac47;
@@ -347,7 +445,7 @@ header{
 }
 
 .work-header p{
-  color:#bdbdbd;
+  color:#fff;
   font-size:17px;
   line-height:1.7;
   padding-bottom: 30px;
@@ -491,7 +589,7 @@ header{
   color:#fff;
 
   font-size:14px;
-  letter-spacing:.18em;
+  letter-spacing:.12em;
   font-weight:600;
   text-transform:uppercase;
   text-decoration:none;
@@ -621,6 +719,14 @@ header{
   #modalImg{
     max-width:85vw;
   }
+   .clients-marquee {
+    gap: 20px;       /* smaller row spacing on mobile */
+  }
+  .clients-track {
+    gap: 50px;       /* horizontal spacing can stay same or reduce */
+    padding: 5px 0;  /* smaller vertical padding */
+  }
+
 }
 
 /* ===== AUTO CLIENT LOGO MOVEMENT ===== */
@@ -645,25 +751,26 @@ header{
   background:#000;
   overflow:hidden;
   text-align:center;
-  padding:70px 0 140px;   /* more vertical air */
+  padding:50px 0 60px;   /* more vertical air */
 }
 
 .clients-title{
-  font-size:50px;
-  letter-spacing:.06em;
+  font-size:60px;
+  font-weight: 600;
+  letter-spacing:.02em;
   color:#d7ac47;
-  margin-bottom:60px;
+  margin-bottom:30px;
 }
 
 /* MARQUEE */
 .clients-marquee{
   display:flex;
   flex-direction:column;
-  gap:60px;
+  gap:5px;
   overflow:hidden;
   overflow-x:hidden;
   overflow-y:visible;        /* allow zoom vertically */
-  padding:30px 0;            /* breathing space */
+  padding:20px 0;            /* breathing space */
 }
 
 /* TRACK */
@@ -707,96 +814,115 @@ header{
 
 /* ---------------- ABOUT ---------------- */
 /* ---------------- ABOUT ---------------- */
-.about{
-  position:relative;
-  height:100vh;
-  overflow:hidden;
-  background:#000;
+.about {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* LAYOUT */
-.about-inner{
-  position:absolute;
-  inset:0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-
-  /* THIS CREATES SPACE BETWEEN VIDEO & TEXT */
-  column-gap:8vw;
-
-  padding:0 6vw;
+.about-inner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 8vw;
+  padding: 0 6vw;
 }
-
 
 /* VIDEO */
-.about-video{
-  position:relative;
-  width:100%;
-  height:70vh;
-  overflow:hidden;
-  border-radius:40px;
+.about-video {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 40px;
+  z-index: 1;
+  contain: paint;
 }
 
-.about-video video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-
-.signature{
-  font-size:15px;
-  color:#aaa;
-}
-
-.signature span{
-  color:#d7ac47;
+.about-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* TEXT */
+.about-content {
+  position: relative;
+  z-index: 3;
+}
 
-.about-content h2{
-  font-size:clamp(38px,5vw,64px);
-  line-height:1.05;
-  margin-bottom:22px;
+.about-content h2 {
+  font-size: 60px;
+  font-weight: 600;
+  color: #d7ac47;
+  margin-bottom: 22px;
+}
+
+.about-content p {
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 18px;
+}
+
+/* SIGNATURE */
+.signature {
+  font-size: 15px;
+  color: #aaa;
+}
+
+.signature span {
   color: #d7ac47;
 }
 
-.about-content p{
-  color:#cfcfcf;
-  font-size:17px;
-  line-height:1.7;
-  margin-bottom:18px;
-  max-width:520px;
-}
-
+/* CTA */
 .more-us {
-  margin-top:48px;
-  display:inline-block;
-  padding:14px 34px;
-
-  color:#fff;
-  border:1px solid #d7ac47;
-  border-radius:999px;
-
-  letter-spacing:.14em;
-  font-size:14px;
+  display: inline-block;
+  margin-top: 48px;
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: 1px solid #d7ac47;
+  color: #fff;
   text-decoration: none;
-
-  transition:.35s cubic-bezier(.16,1,.3,1);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  transition: all .35s cubic-bezier(.16,1,.3,1);
 }
 
-.more-us a{
-    text-decoration: none;
-    color: #fff;
+.more-us:hover {
+  background: #d7ac47;
+  color: #111;
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(224,178,91,.7);
 }
 
-.more-us:hover{
-  background:#d7ac47;
-  color:#111;
-  transform:translateY(-4px);
-  box-shadow:0 0 28px rgba(224,178,91,.7);
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 1024px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-video {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-content h2 {
+    font-size: 36px;
+  }
+
+  .about-video {
+    height: 40vh;
+    border-radius: 24px;
+  }
 }
 
 
@@ -810,7 +936,8 @@ header{
 }
 
 .team-title{
-  font-size:clamp(36px,5vw,66px);
+  font-size:60px;
+  font-weight: 600;
   color:#d7ac47;
   margin-bottom:40px;
 }
@@ -907,7 +1034,8 @@ header{
 
 .team-card h4{
   color:white;
-  font-size:14px;
+  font-size:13px;
+  font-weight: 600;
   margin:4px 0 0;
 }
 
@@ -960,8 +1088,9 @@ header{
   border:1px solid #d7ac47;
   border-radius:999px;
 
-  letter-spacing:.14em;
+  letter-spacing:.12em;
   font-size:14px;
+  font-weight: 600;
   text-decoration:none;
 
   transition:.35s cubic-bezier(.16,1,.3,1);
@@ -1064,18 +1193,6 @@ header{
     min-height:auto !important;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
