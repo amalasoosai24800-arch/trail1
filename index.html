@@ -16,18 +16,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <!-- ScrollToPlugin-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
 
 
 </head>
 
 <body>
-
+ <div id="smooth-wrapper">
 <!-- PRELOADER -->
 <div id="preloader"><div></div></div>
 
 <!-- HEADER -->
 <header>
-  <div class="logo"><img src="./image/clogo.png" alt="Logo"></div>
+  <div class="logo"><a href="/index.html"><img src="./image/clogo.png" alt="Logo"></a></div>
   <div class="header-actions">
     <a href="contact.html" class="btn-talk">Let’s Talk</a>
     <button class="menu-btn" id="menuBtn">MENU</button>
@@ -196,7 +197,7 @@
 <!-- ================= OUR CLIENTS ================= -->
 <section class="clients-section">
 
-  <h1 class="clients-title">OUR CLIENTS</h1>
+  <h2 class="clients-title">OUR CLIENTS</h2>
 
   <div class="clients-marquee">
 
@@ -434,6 +435,6 @@
 
 
 <script src="./js/script.js"></script>
-
+</div>
 </body>
 </html>

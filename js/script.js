@@ -28,33 +28,106 @@ if(menuBtn && menuPopup){
 
 /* ================= HERO SEQUENCE ================= */
 const heroContainer = document.getElementById("heroTextContainer");
-if(heroContainer){
-  const firstSentence = "LET’S BUILD OUR BRAND";
-  const spans = [];
-  const h1First = document.createElement("h1");
 
-  firstSentence.split("").forEach(l=>{
+if (heroContainer) {
+  const text = "LET’S BUILD OUR BRAND";
+  const spans = [];
+  const h1 = document.createElement("h1");
+
+  // Create spans and highlight "BRAND"
+  text.split("").forEach((letter, index) => {
     const span = document.createElement("span");
-    span.textContent = l===" "?"\u00A0":l;
-    h1First.appendChild(span);
+    span.textContent = letter === " " ? "\u00A0" : letter;
+
+    // Make full "BRAND" yellow
+    const brandStart = text.indexOf("BRAND");
+    if (index >= brandStart && index < brandStart + 5) {
+      span.classList.add("brand-highlight");
+    }
+
+    h1.appendChild(span);
     spans.push(span);
   });
 
-  heroContainer.appendChild(h1First);
+  heroContainer.appendChild(h1);
 
-  const heroTL = gsap.timeline({
-    scrollTrigger:{
-      trigger:".hero",
-      start:"top top",
-      end:"+=400%",
-      scrub:true,
-      pin:true
-    }
+  // Center the text
+  gsap.set(h1, {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    xPercent: -50,
+    yPercent: -50
   });
 
-  heroTL.fromTo(spans,{y:100,opacity:0,scale:1.5},{y:0,opacity:1,scale:1,stagger:0.03});
-  heroTL.to(spans,{y:-100,opacity:0,scale:0.8,stagger:0.03,delay:0.3});
+  // Hide letters initially
+  gsap.set(spans, { opacity: 0, y: 40 });
+
+  // 1️⃣ Appear after 1s
+  setTimeout(() => {
+    gsap.to(spans, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.04,
+      duration: 0.6,
+      ease: "power2.out"
+    });
+  }, 1000);
+
+  // 2️⃣ Scroll-triggered disappear / reappear
+  ScrollTrigger.create({
+    trigger: ".hero",
+    start: "top top",
+    end: "bottom top",
+    pin: true,
+    anticipatePin: 1,
+
+    onLeave: () => {
+      // Scroll down → hide text
+      gsap.to(spans, {
+        opacity: 0,
+        y: -40,
+        stagger: 0.03,
+        duration: 0.4,
+        ease: "power2.in"
+      });
+    },
+
+    onEnterBack: () => {
+      // Scroll up → show text
+      gsap.to(spans, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.03,
+        duration: 0.4,
+        ease: "power2.out"
+      });
+    },
+
+    onLeaveBack: () => {
+      // Scroll back to top → hide text
+      gsap.to(spans, {
+        opacity: 0,
+        y: 40,
+        stagger: 0.03,
+        duration: 0.4,
+        ease: "power2.in"
+      });
+    }
+  });
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ================= SERVICES PAGE ANIMATIONS ================= */
 const servicesTitle = document.querySelector(".services-title");

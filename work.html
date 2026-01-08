@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elegans || index</title>
+<title>Elegans Branding || Projects</title>
 <meta name="description" content="Premium branding, experience, social, and merchandise services with cinematic scroll and 3D effects.">
 <meta name="keywords" content="Branding, Experience, Social Media, Merchandise, Premium Animation, 3D Effects">
 <meta name="author" content="Your Company Name">
@@ -14,6 +14,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
 
 <style>
   /* General */
@@ -124,7 +125,7 @@
 </head>
 
 <body>
-
+ <div id="smooth-wrapper">
 <!-- PRELOADER WITH IMAGE -->
 <div id="preloader">
   <img src="./image/clogo.png" alt="Loading..." style="width:100px; height:auto;">
@@ -132,7 +133,7 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo"><img src="./image/clogo.png" alt="Logo"></div>
+  <div class="logo"><a href="index.html"><img src="./image/clogo.png" alt="Logo"></a></div>
   <div class="header-actions">
     <a href="contact.html" class="btn-talk">Let’s Talk</a>
     <button class="menu-btn" id="menuBtn">MENU</button>
@@ -331,6 +332,6 @@
   
   
 </script>
-
+</div>
 </body>
 </html>

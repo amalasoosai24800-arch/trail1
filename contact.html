@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Elegans || Contact</title>
+<title>Elegans Branding || Contact</title>
 <meta name="description" content="Premium branding, experience, social, and merchandise services with cinematic scroll and 3D effects.">
 <meta name="keywords" content="Branding, Experience, Social Media, Merchandise, Premium Animation, 3D Effects">
 <meta name="author" content="Your Company Name">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
+
 <style>
   :root { --gold: #d9ac47; --bg: #000; --card: #111; }
 
@@ -141,9 +143,9 @@
 </style>
 </head>
 <body>
-
+ <div id="smooth-wrapper">
 <header class="header" style="position:fixed; left:0; right:0; top:0; height:70px; display:flex; align-items:center; padding:0 20px; background:rgba(0,0,0,0.2); z-index:20;">
-  <div class="logo"><img src="image/clogo.png" alt="Logo" style="height:36px;"></div>
+  <div class="logo"><a href="index.html"><img src="image/clogo.png" alt="Logo" style="height:36px;"></a></div>
   <div style="margin-left:auto;">
     <button id="closeBtnn" style="background:transparent;border:0;color:#fff;cursor:pointer;">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6 L18 18 M18 6 L6 18" stroke="white" stroke-width="2.6" stroke-linecap="round"/></svg>
@@ -383,6 +385,6 @@ io.observe(container);
  - Stagger timing can be changed (idx*80) to taste
 --------------------------*/
 </script>
-
+</div>
 </body>
 </html>
