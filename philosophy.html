@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Elegans Philosophy | Brand DNA</title>
+<meta name="description" content="Elegans Philosophy – crafting authentic, relevant, kinetic brand experiences inspired by Origami precision.">
+<meta name="keywords" content="Brand Philosophy, Brand DNA, Creative Agency, Branding, Experience Design">
+<meta name="author" content="Elegans">
+<link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
+
+<style>
+
+/* ================= GLOBAL ================= */
+html,body{
+  margin:0;
+  padding:0;
+  background:#0b0b0b;
+  color:#fff;
+  font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ================= PHILOSOPHY SECTION ================= */
+.philosophy-section{
+  padding:120px 0 120px;
+  overflow:hidden;
+}
+
+.philosophy-container{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 80px;
+}
+
+/* INTRO */
+.philosophy-heading{
+  font-size:clamp(44px,6vw,88px);
+  font-weight:600;
+  letter-spacing:-0.02em;
+  color:#d7ac47;
+  margin-bottom:20px;
+}
+
+.philosophy-divider-line{
+  width:120px;
+  height:2px;
+  background:#d7ac47;
+  margin-bottom:18px;
+}
+
+.philosophy-text{
+  font-size:18px;
+  line-height:1.3;
+  color:#ddd;
+  margin-bottom:36px;
+}
+
+/* ================= CORE VALUES ================= */
+.philosophy-values{
+  margin-top:80px;
+  text-align:center;
+}
+
+.philosophy-subheading{
+  
+
+  margin-bottom:20px;
+  color:#d7ac47;
+  
+  font-size:35px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+}
+
+.philosophy-values-intro{
+  max-width:760px;
+  margin:0 auto 80px;
+  font-size:18px;
+  line-height:1.3;
+  color:#ddd;
+}
+
+.philosophy-values-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:50px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.philosophy-value{
+  padding:48px;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(215,172,71,.25);
+  transition:transform .6s cubic-bezier(.16,1,.3,1), box-shadow .6s ease;
+}
+
+.philosophy-value:hover{
+  transform:translateY(-10px);
+  box-shadow:0 40px 80px rgba(215,172,71,.25);
+}
+
+.philosophy-value h4{
+  font-size:22px;
+  margin-bottom:14px;
+  color:#d7ac47;
+}
+
+.philosophy-value p{
+  font-size:17px;
+  line-height:1.7;
+  color:#ddd;
+}
+
+/* ================= TABS ================= */
+.philosophy-tabs-section{
+  padding:90px 40px 40px;
+  max-width:1400px;
+  margin:0 auto;
+}
+
+.philosophy-tabs-header{
+  display:flex;
+  justify-content:center;
+  gap:48px;
+  margin-bottom:60px;
+  flex-wrap:wrap;
+}
+
+.philosophy-tab-btn{
+  background:none;
+  border:none;
+  color:#777;
+  font-size:22px;
+  letter-spacing:.06em;
+  cursor:pointer;
+  padding-bottom:10px;
+  position:relative;
+}
+
+.philosophy-tab-btn::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:#d7ac47;
+  transition:.4s ease;
+}
+
+.philosophy-tab-btn.active{
+  color:#fff;
+}
+
+.philosophy-tab-btn.active::after{
+  width:100%;
+}
+
+.philosophy-tabs-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+/* VIDEO */
+.philosophy-tab-video{
+  height:480px;
+  border-radius:32px;
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+
+.philosophy-tab-video video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* TEXT */
+.philosophy-tab-text h2{
+  font-size:42px;
+  margin-bottom:20px;
+  color:#d7ac47;
+}
+
+.philosophy-tab-text p{
+  font-size:19px;
+  line-height:1.8;
+  color:#e6e6e6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .philosophy-container{padding:0 28px;}
+  .philosophy-values-grid{grid-template-columns:1fr;}
+  .philosophy-tabs-content{grid-template-columns:1fr;}
+  .philosophy-tab-video{height:360px;}
+}
+
+
+/* ================= NEXT LEVEL POLISH ================= */
+
+
+
+/* Tabs – premium underline motion */
+.philosophy-tab-btn{
+  transition:color .3s ease;
+}
+
+.philosophy-tab-btn:hover{
+  color:#fff;
+}
+
+/* Tabs content card feel */
+.philosophy-tabs-content{
+  padding:40px;
+  border-radius:40px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.015)
+  );
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+/* Video framing */
+.philosophy-tab-video{
+  position:relative;
+}
+
+.philosophy-tab-video::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:32px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+  pointer-events:none;
+}
+
+/* Text refinement */
+.philosophy-tab-text h2{
+  line-height:1.1;
+}
+
+.philosophy-tab-text p{
+  max-width:520px;
+}
+
+/* Mobile polish */
+@media(max-width:900px){
+  .philosophy-tabs-content{
+    padding:28px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+  <div id="smooth-wrapper">
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><a href="/index.html"><img src="./image/clogo.png" alt="Logo"></a></div>
+  <div class="header-actions">
+    <a href="contact.html" class="btn-talk">Let’s Talk</a>
+    <button class="menu-btn" id="menuBtn">MENU</button>
+  </div>
+  <div class="menu-popup" id="menuPopup">
+    <a href="index.html">Home</a>
+    <a href="aboutelegans.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="culture.html">Culture</a>
+  </div>
+</header>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="philosophy-section" id="philosophy">
+
+  <div class="philosophy-container">
+
+    <h1 class="philosophy-heading">Elegans Philosophy</h1>
+    <div class="philosophy-divider-line"></div>
+
+    <p class="philosophy-text">
+      At Elegans, our philosophy is inspired by the intricate art of Origami, where transformation is achieved with precision and grace, without compromising the essence of the original. This approach mirrors how we interact with and create experiences for our clients. 
+      Like Origami, we bring balance and harmony to every project, crafting bespoke solutions that evolve their brand while preserving its core identity.
+    </p>
+
+    <p class="philosophy-text">
+      Our logo, an Origami pinwheel, symbolizes this dynamic process, with its rotation representing movement and change. Just as each fold in Origami brings a new dimension, our work with clients is designed to unfold opportunities and create value, seamlessly integrating innovation and authenticity to craft meaningful brand experiences.
+    </p>
+
+    <!-- CORE VALUES -->
+    <div class="philosophy-values">
+      <h2 class="philosophy-subheading">Our Core Values</h2>
+      <p class="philosophy-values-intro">
+        At Elegans, our foundational values, embodied in the four sails of our Origami pinwheel, guide how we interact with clients and shape the experiences we create for them:
+      </p>
+
+      <div class="philosophy-values-grid">
+        <div class="philosophy-value">
+          <h4>Authenticity</h4>
+          <p>We remain steadfast in our core values, treating our clients with transparency, integrity, and a genuine commitment to their success. Every interaction reflects our dedication to staying true to who we are while honoring the unique identity of each client.</p>
+        </div>
+        <div class="philosophy-value">
+          <h4>Experience</h4>
+          <p>Drawing from our collective expertise, we craft exceptional experiences for our clients, ensuring that every project delivers meaningful value. We prioritize understanding their needs to create solutions that are not just functional but also memorable.</p>
+        </div>
+        <div class="philosophy-value">
+          <h4>Relevance</h4>
+          <p>We ensure that our strategies and solutions are always timely, impactful, and aligned with the evolving needs of our clients. By staying deeply connected to their industries and audiences, we help them remain competitive and forward-thinking.</p>
+        </div>
+        <div class="philosophy-value">
+          <h4>Kinetic</h4>
+          <p>We embody a spirit of continuous improvement and positive change, driving our clients toward growth and innovation. Our dynamic approach ensures that every collaboration leads to transformation and measurable success.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= TABS ================= -->
+<section class="philosophy-tabs-section">
+
+  <div class="philosophy-tabs-header">
+    <button class="philosophy-tab-btn active" data-tab="authenticity">Authenticity</button>
+    <button class="philosophy-tab-btn" data-tab="experience">Experience</button>
+    <button class="philosophy-tab-btn" data-tab="relevance">Relevance</button>
+    <button class="philosophy-tab-btn" data-tab="kinetic">Kinetic</button>
+  </div>
+
+  <div class="philosophy-tabs-content">
+
+    <div class="philosophy-tab-video">
+      <video id="philosophyVideo" autoplay muted loop playsinline>
+        <source src="./video/Animation change.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="philosophy-tab-text">
+      <h2 id="philosophyTabTitle">Authenticity</h2>
+      <p id="philosophyTabText">
+       We remain steadfast in our core values, treating our clients with transparency, integrity, and a genuine commitment to their success. Every interaction reflects our dedication to staying true to who we are while honoring the unique identity of each client.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <!-- Column 1 – Brand -->
+    <div class="footer-brand">
+      <img src="./image/logo_elegans.png" alt="ELEGANS Creative Branding Studio Logo" class="footer-logo">
+      <p class="footer-desc">
+        Creative branding studio delivering brand strategy, 
+        visual identity, digital campaigns, and 
+        storytelling for global brands.
+
+      </p>
+    </div>
+
+    <!-- Column 2 – Contact -->
+    <div class="footer-contact">
+      <h3>Contact</h3>
+      <p>
+        <strong>Email</strong><br>
+        <a href="mailto:hello@elegans.com">hello@elegans.com</a>
+      </p>
+      <p>
+        <strong>Phone</strong><br>
+        <a href="tel:+911234567890">+91 123 456 7890</a>
+      </p>
+    </div>
+
+    <!-- Column 3 – Addresses -->
+    <!-- Column 3 – Locations -->
+<div class="footer-addresses">
+  <h3>Our Locations</h3>
+
+  <ul class="location-list">
+    <li data-city="Chennai, India"
+        data-address="123 Creative Street, Chennai, India">
+        India
+    </li>
+
+    <li data-city="Singapore"
+        data-address="45 Design Avenue, Singapore">
+        Dubai
+    </li>
+
+    <li data-city="London, UK"
+        data-address="78 Branding Road, London, United Kingdom">
+        United Kingdom
+    </li>
+  </ul>
+</div>
+
+
+    <!-- Column 4 – Social -->
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/elegansinc/" target="_blank"  aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/elegansagency/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/elegansinc/" target="_blank" aria-label="FaceBook"><i class="fab fa-facebook"></i></a>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>© <span id="footerYear"></span> ELEGANS — All Rights Reserved</p>
+    <p>Creative Branding Studio | India • Dubai • UK</p>
+  </div>
+ 
+</footer>
+
+<!-- LOCATION POPUP -->
+<div id="location-popup" class="location-popup">
+  <div class="location-box">
+    
+    <span id="popup-close">×</span>
+
+    <h3 id="popup-city"></h3>
+    <p id="popup-address"></p>
+
+  </div>
+</div>
+
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ================= PHILOSOPHY INTRO ================= */
+
+/* Soft Origami Unfold (NO EXIT HIDING) */
+gsap.from(".philosophy-heading", {
+  scrollTrigger: {
+    trigger: ".philosophy-section",
+    start: "top 80%",
+  },
+  y: 80,
+  rotateX: -12,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out"
+});
+
+gsap.from(".philosophy-text", {
+  scrollTrigger: {
+    trigger: ".philosophy-section",
+    start: "top 75%",
+  },
+  y: 60,
+  opacity: 0,
+  stagger: 0.25,
+  duration: 1,
+  ease: "power3.out"
+});
+
+/* Gentle scroll drift instead of exit */
+gsap.to(".philosophy-container", {
+  scrollTrigger: {
+    trigger: ".philosophy-section",
+    start: "top top",
+    end: "bottom top",
+    scrub: 0.6
+  },
+  y: -60,
+  ease: "none"
+});
+
+/* ================= CORE VALUES ================= */
+
+gsap.from(".philosophy-value", {
+  scrollTrigger: {
+    trigger: ".philosophy-values",
+    start: "top 75%",
+  },
+  y: 90,
+  rotateX: -16,
+  opacity: 0,
+  stagger: 0.2,
+  duration: 1.1,
+  ease: "power4.out"
+});
+
+/* Breathing Origami Motion (SAFE) */
+gsap.to(".philosophy-value", {
+  y: -10,
+  duration: 3.8,
+  ease: "sine.inOut",
+  yoyo: true,
+  repeat: -1,
+  stagger: {
+    each: 0.7,
+    from: "random"
+  }
+});
+
+/* ================= TABS SECTION ================= */
+
+gsap.from(".philosophy-tabs-header", {
+  scrollTrigger: {
+    trigger: ".philosophy-tabs-section",
+    start: "top 75%",
+  },
+  y: 60,
+  opacity: 0,
+  duration: 1,
+  ease: "power3.out"
+});
+
+gsap.from(".philosophy-tabs-content", {
+  scrollTrigger: {
+    trigger: ".philosophy-tabs-section",
+    start: "top 70%",
+  },
+  y: 80,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out"
+});
+
+/* ================= TAB INTERACTION (SAFE) ================= */
+
+const philosophyData = {
+  authenticity:{
+    title:"Authenticity",
+    text:"We remain steadfast in our core values, treating our clients with transparency, integrity, and a genuine commitment to their success. Every interaction reflects our dedication to staying true to who we are while honoring the unique identity of each client.",
+    video:"./video/Animation change.mp4"
+  },
+  experience:{
+    title:"Experience",
+    text:"Drawing from our collective expertise, we craft exceptional experiences for our clients, ensuring that every project delivers meaningful value. We prioritize understanding their needs to create solutions that are not just functional but also memorable. ",
+    video:"./video/Animation change.mp4"
+  },
+  relevance:{
+    title:"Relevance",
+    text:"We ensure that our strategies and solutions are always timely, impactful, and aligned with the evolving needs of our clients. By staying deeply connected to their industries and audiences, we help them remain competitive and forward-thinking.",
+    video:"./video/Animation change.mp4"
+  },
+  kinetic:{
+    title:"Kinetic",
+    text:"We embody a spirit of continuous improvement and positive change, driving our clients toward growth and innovation. Our dynamic approach ensures that every collaboration leads to transformation and measurable success.",
+    video:"./video/Animation change.mp4"
+  }
+};
+
+const buttons = document.querySelectorAll(".philosophy-tab-btn");
+const title = document.getElementById("philosophyTabTitle");
+const text = document.getElementById("philosophyTabText");
+const video = document.getElementById("philosophyVideo");
+
+buttons.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const data = philosophyData[btn.dataset.tab];
+
+    /* Smooth content swap (NO HIDING) */
+    gsap.to([title, text], {
+      y: -16,
+      opacity: 0.3,
+      duration: 0.25,
+      ease: "power2.out",
+      onComplete: ()=>{
+
+        title.textContent = data.title;
+        text.textContent = data.text;
+
+        video.pause();
+        video.src = data.video;
+        video.load();
+        video.play().catch(()=>{});
+
+        gsap.fromTo([title, text],
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
+        );
+      }
+    });
+
+  });
+});
+
+
+
+/* ================= NEXT LEVEL MOTION ================= */
+
+/* Divider unfold */
+gsap.from(".philosophy-divider-line",{
+  scrollTrigger:{
+    trigger:".philosophy-section",
+    start:"top 80%"
+  },
+  scaleX:0,
+  duration:.8,
+  ease:"power3.out"
+});
+
+/* Values stagger depth */
+gsap.from(".philosophy-value h4",{
+  scrollTrigger:{
+    trigger:".philosophy-values",
+    start:"top 75%"
+  },
+  y:30,
+  opacity:0,
+  stagger:.15,
+  duration:.7,
+  ease:"power3.out"
+});
+
+/* Video subtle parallax */
+gsap.to(".philosophy-tab-video video",{
+  scrollTrigger:{
+    trigger:".philosophy-tabs-section",
+    start:"top bottom",
+    end:"bottom top",
+    scrub:.6
+  },
+  scale:1.05,
+  ease:"none"
+});
+
+/* Tabs hover kinetic micro motion */
+document.querySelectorAll(".philosophy-tab-btn").forEach(btn=>{
+  btn.addEventListener("mouseenter",()=>{
+    gsap.to(btn,{
+      y:-4,
+      duration:.3,
+      ease:"power2.out"
+    });
+  });
+  btn.addEventListener("mouseleave",()=>{
+    gsap.to(btn,{
+      y:0,
+      duration:.3,
+      ease:"power2.out"
+    });
+  });
+});
+
+/* Tab exit animation – clean & premium */
+function animateTabExit(){
+  return gsap.to(".philosophy-tabs-content",{
+    y:-20,
+    opacity:0,
+    duration:.35,
+    ease:"power2.in"
+  });
+}
+
+function animateTabEnter(){
+  return gsap.fromTo(".philosophy-tabs-content",
+    { y:30, opacity:0 },
+    { y:0, opacity:1, duration:.6, ease:"power3.out" }
+  );
+}
+
+/* Hook into existing tab logic */
+buttons.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+
+    animateTabExit().then(()=>{
+      animateTabEnter();
+    });
+
+  });
+});
+
+</script>
+
+</body>
+</html>

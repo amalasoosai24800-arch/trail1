@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegans Branding | About </title>
+  <meta name="description" content="Premium branding, experience, social, and merchandise services with cinematic scroll and 3D effects.">
+<meta name="keywords" content="Branding, Experience, Social Media, Merchandise, Premium Animation, 3D Effects">
+<meta name="author" content="Your Company Name">
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="./css/styles.css">
+<style>
+    /* GLOBAL */
+.philosophy-container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  color:#fff;
+}
+
+/* HERO */
+.philosophy-hero{
+  padding:120px 0 80px;
+  background:#000;
+  text-align:center;
+}
+
+.philosophy-hero h1{
+  font-size:52px;
+  color:#d7ac47;
+  margin-bottom:30px;
+}
+
+.philosophy-hero p{
+  max-width:820px;
+  margin:0 auto 18px;
+  font-size:17px;
+  line-height:1.8;
+  color:rgba(255,255,255,.75);
+}
+
+/* VALUES */
+.philosophy-values{
+  padding:100px 0;
+  background:#050505;
+}
+
+.philosophy-values h2{
+  text-align:center;
+  font-size:40px;
+  color:#d7ac47;
+  margin-bottom:60px;
+}
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+
+.value-card{
+  background:rgba(255,255,255,.04);
+  padding:32px;
+  border-radius:16px;
+  backdrop-filter:blur(6px);
+}
+
+.value-card h3{
+  color:#d7ac47;
+  margin-bottom:14px;
+}
+
+/* SERVICES */
+.services-overview{
+  padding:80px 0;
+  background:#000;
+  text-align:center;
+}
+
+.services-overview h2{
+  font-size:38px;
+  color:#d7ac47;
+}
+
+.services-pillars{
+  margin-top:16px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.7);
+}
+
+/* SERVICE DETAILS */
+.services-detail{
+  padding:100px 0;
+  background:#050505;
+}
+
+.service-block{
+  margin-bottom:70px;
+}
+
+.service-block h3{
+  font-size:28px;
+  color:#d7ac47;
+  margin-bottom:16px;
+}
+
+.service-block ul{
+  padding-left:18px;
+}
+
+.service-block li{
+  margin-bottom:8px;
+  color:rgba(255,255,255,.75);
+}
+
+/* DNA */
+.dna-section{
+  padding:120px 0;
+  background:#000;
+  text-align:center;
+}
+
+.dna-section h2{
+  font-size:40px;
+  color:#d7ac47;
+  margin-bottom:28px;
+}
+
+.dna-section p{
+  max-width:800px;
+  margin:0 auto 18px;
+  font-size:17px;
+  line-height:1.8;
+  color:rgba(255,255,255,.75);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .values-grid{
+    grid-template-columns:1fr;
+  }
+
+  .philosophy-hero h1{
+    font-size:38px;
+  }
+}
+
+.value-card{
+  position:relative;
+  background:rgba(255,255,255,.04);
+  padding:36px;
+  border-radius:18px;
+  transition:transform .6s cubic-bezier(.16,1,.3,1),
+             box-shadow .6s ease;
+}
+
+.value-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  background:linear-gradient(
+    135deg,
+    rgba(215,172,71,.18),
+    transparent 40%
+  );
+  opacity:0;
+  transition:opacity .6s ease;
+}
+
+.value-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(215,172,71,.18);
+}
+
+.value-card:hover::after{
+  opacity:1;
+}
+
+
+
+
+
+
+.philosophy-visual{
+  padding:80px 0;
+  background:#000;
+}
+
+.philo-image-card{
+  max-width:720px;
+  margin:0 auto;
+  border-radius:26px;
+  overflow:hidden;
+  position:relative;
+  background:#111;
+  box-shadow:0 40px 90px rgba(0,0,0,.6);
+}
+
+.philo-image-card img{
+  width:100%;
+  height:auto;
+  display:block;
+  transform:scale(1);
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1);
+}
+
+.philo-image-card:hover img{
+  transform:scale(1.04);
+}
+
+.philo-image-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding:30px;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.55),
+    transparent
+  );
+}
+
+.philo-image-overlay span{
+  letter-spacing:.2em;
+  font-size:13px;
+  text-transform:uppercase;
+  color:#d7ac47;
+}
+
+.service-block{
+  position:relative;
+  padding-left:28px;
+}
+
+.service-block::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:6px;
+  width:4px;
+  height:0;
+  background:#d7ac47;
+  transition:height .8s ease;
+}
+
+.service-block:hover::before{
+  height:70%;
+}
+
+
+
+
+.dna-section{
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(215,172,71,.12),
+      transparent 60%
+    ),
+    #000;
+}
+
+
+@media(max-width:768px){
+  *{
+    transform:none !important;
+  }
+
+  .philo-image-card{
+    border-radius:18px;
+  }
+
+  .philosophy-hero h1{
+    font-size:34px;
+  }
+}
+
+
+
+</style>
+</head>
+<body>
+<!-- =========================
+   ELEGANS PHILOSOPHY PAGE
+========================= -->
+
+<section class="philosophy-hero">
+  <div class="philosophy-container">
+
+    <h1>Elegans Philosophy</h1>
+
+    <p class="philosophy-intro">
+      At Elegans, our philosophy is inspired by the intricate art of Origami — 
+      where transformation is achieved with precision and grace, without 
+      compromising the essence of the original.
+    </p>
+
+    <p>
+      Like Origami, we bring balance and harmony to every project, crafting 
+      bespoke solutions that evolve brands while preserving their core identity.
+    </p>
+
+    <p>
+      Our logo, an Origami pinwheel, symbolizes movement and change. Each fold 
+      represents a new dimension — unfolding opportunity, integrating innovation 
+      with authenticity, and creating meaningful brand experiences.
+    </p>
+
+  </div>
+</section>
+
+<section class="philosophy-visual">
+  <div class="philosophy-container">
+
+    <div class="philo-image-card">
+      <img src="image/philosophy-origami.jpg" 
+           alt="Elegans Philosophy Origami Concept">
+      
+      <div class="philo-image-overlay">
+        <span>Inspired by Origami</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+   CORE VALUES
+========================= -->
+
+<section class="philosophy-values">
+  <div class="philosophy-container">
+
+    <h2>Our Core Values</h2>
+
+    <div class="values-grid">
+
+      <div class="value-card">
+        <h3>Authenticity</h3>
+        <p>
+          We remain steadfast in our values, working with transparency, integrity,
+          and a genuine commitment to honoring each brand’s unique identity.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>Experience</h3>
+        <p>
+          We craft exceptional brand experiences by deeply understanding client
+          needs and delivering solutions that are meaningful and memorable.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>Relevance</h3>
+        <p>
+          Our strategies are timely, impactful, and aligned with evolving markets,
+          ensuring brands stay competitive and forward-thinking.
+        </p>
+      </div>
+
+      <div class="value-card">
+        <h3>Kinetic</h3>
+        <p>
+          We embody motion and growth — driving innovation, transformation, and
+          measurable success through dynamic collaboration.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+   SERVICES OVERVIEW
+========================= -->
+
+<section class="services-overview">
+  <div class="philosophy-container">
+
+    <h2>We Make Branding Easy</h2>
+
+    <p class="services-pillars">
+      Brand &nbsp;|&nbsp; Experience &nbsp;|&nbsp; Social &nbsp;|&nbsp; Merchandise
+    </p>
+
+  </div>
+</section>
+
+<!-- =========================
+   SERVICES DETAILS
+========================= -->
+
+<section class="services-detail">
+  <div class="philosophy-container">
+
+    <!-- CREATIVE -->
+    <div class="service-block">
+      <h3>Creative</h3>
+      <p>
+        We help you build the right <strong>Brand DNA</strong> — the soul of your
+        business — so your stories inspire trust, reputation, and recognition.
+      </p>
+
+      <ul>
+        <li>Creative Consulting</li>
+        <li>Creative Strategy</li>
+        <li>Branding</li>
+        <li>Campaign Strategy</li>
+        <li>Creative Direction</li>
+        <li>Design & Animation</li>
+        <li>Content Creation</li>
+        <li>AR / VR & Web Development</li>
+      </ul>
+    </div>
+
+    <!-- EVENTS -->
+    <div class="service-block">
+      <h3>Events</h3>
+      <p>
+        With over 35 years of cumulative experience, we craft immersive brand
+        events that captivate audiences and make your brand the talk of the town.
+      </p>
+
+      <ul>
+        <li>Event Consulting & Strategy</li>
+        <li>Creative & Experience Design</li>
+        <li>Photography & Video</li>
+        <li>Event / Stall Design</li>
+        <li>Merchandise</li>
+        <li>Print & Digital</li>
+      </ul>
+    </div>
+
+    <!-- DIGITAL -->
+    <div class="service-block">
+      <h3>Digital</h3>
+      <p>
+        We help brands stand out in a noisy world through powerful storytelling,
+        digital campaigns, and compelling social narratives.
+      </p>
+
+      <ul>
+        <li>Campaign Strategy</li>
+        <li>Influencer Marketing</li>
+        <li>Digital Advertising</li>
+        <li>Content Creation & Production</li>
+        <li>Photo & Video</li>
+        <li>Live Production</li>
+      </ul>
+    </div>
+
+    <!-- PRODUCT -->
+    <div class="service-block">
+      <h3>Product</h3>
+      <p>
+        We capture the essence of your products with precision and artistry,
+        transforming vision into striking visuals and tangible experiences.
+      </p>
+
+      <ul>
+        <li>Product Design</li>
+        <li>Prototype Development</li>
+        <li>Product Photography</li>
+        <li>360° Visuals</li>
+        <li>Production Support</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+   DNA SECTION
+========================= -->
+
+<section class="dna-section">
+  <div class="philosophy-container">
+
+    <h2>Our DNA</h2>
+
+    <p>
+      Mutual trust, respect, and the freedom to challenge ideas form the core of
+      our DNA. We believe the best work emerges from open dialogue, shared
+      ownership, and thoughtful collaboration.
+    </p>
+
+    <p>
+      This foundation enables us to build lasting partnerships, foster innovation,
+      and create experiences that are as authentic as they are transformative.
+    </p>
+
+  </div>
+</section>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Fade-up editorial reveal
+gsap.utils.toArray([
+  ".philosophy-hero h1",
+  ".philosophy-hero p",
+  ".philo-image-card",
+  ".value-card",
+  ".service-block",
+  ".dna-section p"
+]).forEach(el => {
+  gsap.from(el, {
+    opacity:0,
+    y:50,
+    duration:1.2,
+    ease:"power3.out",
+    scrollTrigger:{
+      trigger:el,
+      start:"top 80%"
+    }
+  });
+});
+</script>
+
+</body>
+</html>

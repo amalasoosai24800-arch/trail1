@@ -396,3 +396,6 @@ if(locationPopup && popupClose && locationItems.length){
 // FOOTER YEAR
 const footerYear = document.getElementById("footerYear");
 if(footerYear) footerYear.textContent = new Date().getFullYear();
+
+
+
