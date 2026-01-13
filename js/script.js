@@ -26,20 +26,23 @@ if(menuBtn && menuPopup){
   };
 }
 
-/* ================= HERO SEQUENCE ================= */
-const heroContainer = document.getElementById("heroTextContainer");
+/* ================= HERO SEQUENCE – INSTANT ON TOUCH / SCROLL ================= */
+gsap.registerPlugin(ScrollTrigger);
 
-if (heroContainer) {
+const heroContainer = document.getElementById("heroTextContainer");
+const heroSection = document.querySelector(".hero");
+
+if (heroContainer && heroSection) {
+
   const text = "LET’S BUILD OUR BRAND";
   const spans = [];
   const h1 = document.createElement("h1");
 
-  // Create spans and highlight "BRAND"
+  /* BUILD LETTERS */
   text.split("").forEach((letter, index) => {
     const span = document.createElement("span");
     span.textContent = letter === " " ? "\u00A0" : letter;
 
-    // Make full "BRAND" yellow
     const brandStart = text.indexOf("BRAND");
     if (index >= brandStart && index < brandStart + 5) {
       span.classList.add("brand-highlight");
@@ -51,7 +54,7 @@ if (heroContainer) {
 
   heroContainer.appendChild(h1);
 
-  // Center the text
+  /* CENTER TEXT */
   gsap.set(h1, {
     position: "absolute",
     top: "50%",
@@ -60,59 +63,61 @@ if (heroContainer) {
     yPercent: -50
   });
 
-  // Hide letters initially
-  gsap.set(spans, { opacity: 0, y: 40 });
+  /* INITIAL STATE */
+  gsap.set(spans, { opacity: 0, y: 50 });
 
-  // 1️⃣ Appear after 1s
-  setTimeout(() => {
-    gsap.to(spans, {
-      opacity: 1,
-      y: 0,
-      stagger: 0.04,
-      duration: 0.6,
-      ease: "power2.out"
-    });
-  }, 1000);
+  /* ================= ENTER ANIMATION ================= */
+  const enterTL = gsap.timeline({ paused: true });
+  enterTL.to(spans, {
+    opacity: 1,
+    y: 0,
+    stagger: 0.08,
+    duration: 0.8,
+    ease: "power3.out"
+  });
 
-  // 2️⃣ Scroll-triggered disappear / reappear
+  /* ================= EXIT ANIMATION ================= */
+  const exitTL = gsap.timeline({ paused: true });
+  exitTL.to(spans, {
+    opacity: 0,
+    y: -50,
+    stagger: 0.05,
+    duration: 0.45,
+    ease: "power2.in"
+  });
+
+  /* PLAY ON LOAD */
+  enterTL.play();
+
+  /* ================= GESTURE DETECTION ================= */
+  let exited = false;
+
+  const triggerExit = () => {
+    if (!exited) {
+      exited = true;
+      exitTL.play();
+    }
+  };
+
+  window.addEventListener("wheel", triggerExit, { once: true });
+  window.addEventListener("touchstart", triggerExit, { once: true });
+
+  /* ================= SCROLL CONTROL ================= */
   ScrollTrigger.create({
-    trigger: ".hero",
+    trigger: heroSection,
     start: "top top",
-    end: "bottom top",
+    end: "+=1",        // 1px is enough
     pin: true,
     anticipatePin: 1,
 
     onLeave: () => {
-      // Scroll down → hide text
-      gsap.to(spans, {
-        opacity: 0,
-        y: -40,
-        stagger: 0.03,
-        duration: 0.4,
-        ease: "power2.in"
-      });
+      triggerExit();
     },
 
     onEnterBack: () => {
-      // Scroll up → show text
-      gsap.to(spans, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.03,
-        duration: 0.4,
-        ease: "power2.out"
-      });
-    },
-
-    onLeaveBack: () => {
-      // Scroll back to top → hide text
-      gsap.to(spans, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.03,
-        duration: 0.4,
-        ease: "power2.in"
-      });
+      exited = false;
+      exitTL.pause(0);
+      enterTL.restart();
     }
   });
 }
@@ -193,95 +198,165 @@ if(serviceContentElem && serviceVideoFrame){
 
 
 /* =========================================================
-   SERVICE CONTENT DATA & ELEMENTS
+   SERVICES CONTENT DATA
 ========================================================= */
 const serviceContent = {
-  brand:{overview:"Our brand team build identities that stand out, stay relevant and drive emotional connection through strategy, storytelling and design excellence.",services:"Brand strategy, Logo & Visual Identity, Brand Guidelines, Storytelling Workshops.",video:"./showreel.mp4"},
-  experience:{overview:"We create immersive brand experiences—live, digital and physical—turning touchpoints into lasting emotional memories.",services:"Experiential events, Retail design, Digital activations, Interactive campaigns.",video:"./showreel.mp4"},
-  social:{overview:"We design scroll-stopping social campaigns that spark conversations, build communities and amplify your brand voice.",services:"Social media campaigns, Content creation, Influencer collaborations, Community engagement.",video:"./showreel.mp4"},
-  merch:{overview:"We craft premium wearable storytelling—merchandise that merges culture, style and brand loyalty.",services:"Custom merchandise, Apparel & accessories, Packaging, Branded giveaways.",video:"./showreel.mp4"}
+  brand: {
+    title: "Creative ",
+    overview:
+      "We help you build and develop the right brand DNA* so you can tell your stories better to build reputation, trust and to win accolades. We are creative aficionados passionate about branding and creativity. As an integrated creative agency, our Strategy team focuses on ideas to create blueprints and our execution team brings the blueprint to life, transforming strategic plans to tangible realities. ",
+    services:
+      "Brand Strategy, Logo & Visual Identity, Brand Guidelines, Storytelling Workshops.",
+    video: "./showreel.mp4"
+  },
+
+  experience: {
+    title: "Brand Ex",
+    overview:
+      "We craft immersive brand events and experiences. Predominant time of our 35 years of cumulative experience has been in creating experiences that makes your brand be the talk of the town. Be it events, conferences, experiential campaigns, we know how to make an impact. We specialize in crafting immersive brand experiences and events that captivate audiences and elevate brand presence. From dynamic events and impactful conferences to innovative experiential campaigns, with over 35 years of cumulative experience, we ensure your brand becomes the focal point of conversation.",
+    services:
+      "Experiential Events, Conferences, Retail Design, Interactive Campaigns.",
+    video: "./showreel.mp4"
+  },
+
+  social: {
+    title: "Digital ",
+    overview:
+      "Let us tell your stories better so you stand out in a cluttered noisy world. With our (seasoned) script writers and production team, we deliver exceptional creative concepts and social narrative that makes your brand stand out in the art and science of branding ",
+    services:
+      "Social Media Campaigns, Content Creation, Influencer Marketing, Community Management.",
+    video: "./showreel.mp4"
+  },
+
+  merch: {
+    title: "Product",
+    overview:
+      "We specialise in capturing the essence and allure of your products with precision and artistry. Our high quality, meticulous creative services are designed to bring your brand’s vision to life through striking visuals and innovative concepts. ",
+    services:
+      "Custom Merchandise, Apparel, Packaging Design, Branded Giveaways.",
+    video: "./showreel.mp4"
+  }
 };
 
+/* =========================================================
+   ELEMENTS
+========================================================= */
 const serviceCards = document.querySelectorAll(".service-card");
 const serviceTitle = document.getElementById("serviceTitle");
-const serviceText  = document.getElementById("serviceText");
+const serviceText = document.getElementById("serviceText");
 const servicePanel = document.querySelector(".service-content");
 const serviceVideo = document.querySelector(".service-video-frame video");
 const tabs = document.querySelectorAll(".tab");
 
 /* =========================================================
-   SERVICE CARD CLICK (MAIN LOGIC)
+   MAIN SERVICE CARD CLICK
 ========================================================= */
-if(serviceCards.length && serviceTitle && serviceText){
-  serviceCards.forEach(card=>{
-    card.addEventListener("click",()=>{
-      serviceCards.forEach(c=>c.classList.remove("active"));
-      card.classList.add("active");
+serviceCards.forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.service;
+    const data = serviceContent[key];
+    if (!data) return;
 
-      const key = card.dataset.service;
-      serviceTitle.textContent = key.charAt(0).toUpperCase() + key.slice(1);
-      serviceText.textContent = serviceContent[key].overview;
+    /* ACTIVE STATE */
+    serviceCards.forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
 
-      tabs.forEach(t=>t.classList.remove("active"));
-      if(tabs[0]) tabs[0].classList.add("active");
+    /* TITLE + DEFAULT TEXT */
+    serviceTitle.textContent = data.title;
+    serviceText.textContent = data.overview;
 
-      if(servicePanel) gsap.fromTo(servicePanel,{y:40,opacity:0},{y:0,opacity:1,duration:0.6,ease:"power3.out"});
+    /* RESET TABS */
+    tabs.forEach(t => t.classList.remove("active"));
+    tabs[0].classList.add("active");
 
-      if(serviceVideo){
-        serviceVideo.pause();
-        serviceVideo.src = serviceContent[key].video;
-        serviceVideo.load();
-        serviceVideo.play().catch(()=>{});
-      }
+    /* CONTENT ANIMATION */
+    gsap.fromTo(
+      servicePanel,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+    );
 
-      ScrollTrigger.refresh();
-    });
+    /* VIDEO SWAP */
+    if (serviceVideo) {
+      serviceVideo.pause();
+      serviceVideo.src = data.video;
+      serviceVideo.load();
+      serviceVideo.play().catch(() => {});
+    }
+
+    ScrollTrigger.refresh();
   });
+});
 
-  /* TAB CLICK */
-  tabs.forEach(tab=>{
-    tab.addEventListener("click",()=>{
-      tabs.forEach(t=>t.classList.remove("active"));
-      tab.classList.add("active");
+/* =========================================================
+   OVERVIEW / SERVICES TAB SWITCH
+========================================================= */
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
 
-      const activeKey = document.querySelector(".service-card.active")?.dataset.service;
-      if(activeKey && serviceText){
-        const type = tab.textContent.toLowerCase();
-        serviceText.textContent = serviceContent[activeKey][type];
-      }
-    });
+    const activeService = document.querySelector(".service-card.active");
+    if (!activeService) return;
+
+    const key = activeService.dataset.service;
+    const type = tab.textContent.toLowerCase();
+
+    serviceText.textContent = serviceContent[key][type];
+
+    gsap.fromTo(
+      serviceText,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }
+    );
   });
-}
+});
 
-/* HERO / OTHER LIST → SCROLL TO SERVICES + ACTIVATE */
-document.querySelectorAll("[data-jump]").forEach(item=>{
-  item.addEventListener("click",()=>{
+/* =========================================================
+   HERO / OTHER SECTIONS → SCROLL & ACTIVATE
+========================================================= */
+document.querySelectorAll("[data-jump]").forEach(item => {
+  item.addEventListener("click", () => {
     const target = item.dataset.jump;
     const servicesSection = document.getElementById("servicesSection");
-    if(!servicesSection) return;
+    if (!servicesSection) return;
 
-    gsap.to(window,{
-      scrollTo:{y:"#servicesSection",offsetY:120},
-      duration:1.2,
-      ease:"power3.inOut",
-      onComplete:()=>{
-        const card = document.querySelector(`.service-card[data-service="${target}"]`);
-        if(card) card.click();
+    gsap.to(window, {
+      scrollTo: { y: servicesSection, offsetY: 120 },
+      duration: 1.2,
+      ease: "power3.inOut",
+      onComplete: () => {
+        const card = document.querySelector(
+          `.service-card[data-service="${target}"]`
+        );
+        if (card) card.click();
       }
     });
   });
 });
 
-/* MAGNETIC 3D CARD EFFECT */
-serviceCards.forEach(card=>{
-  if(window.matchMedia("(hover:hover)").matches){
-    card.addEventListener("mousemove", e=>{
+/* =========================================================
+   MAGNETIC 3D HOVER EFFECT (DESKTOP ONLY)
+========================================================= */
+serviceCards.forEach(card => {
+  if (window.matchMedia("(hover: hover)").matches) {
+    card.addEventListener("mousemove", e => {
       const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width/2;
-      const y = e.clientY - r.top - r.height/2;
-      card.style.transform = `perspective(800px) translate(${x*0.1}px,${y*0.1}px) scale(1.1) rotateX(${y*0.03}deg) rotateY(${x*0.04}deg)`;
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+
+      card.style.transform = `
+        perspective(800px)
+        translate(${x * 0.1}px, ${y * 0.1}px)
+        scale(1.1)
+        rotateX(${y * 0.03}deg)
+        rotateY(${x * 0.04}deg)
+      `;
     });
-    card.addEventListener("mouseleave",()=>{card.style.transform="";});
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
   }
 });
 
@@ -367,6 +442,68 @@ if(topBtn){
   topBtn.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"});});
   window.addEventListener("scroll",()=>{window.scrollY>200?topBtn.classList.add("show"):topBtn.classList.remove("show");});
 }
+
+
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+const video = document.getElementById("philosophyVideo");
+
+if (video) {
+
+  const origamiTL = gsap.timeline({ paused: true });
+
+  origamiTL
+    /* unfold paper */
+    .to(".philosophy-origami-video video", {
+      clipPath: "polygon(0% 0%,100% 0%,100% 100%,0% 100%)",
+      width: "100vw",
+      height: "100vh",
+      borderRadius: 0,
+      duration: 1,
+      ease: "power4.inOut"
+    })
+
+    /* fold edges illusion */
+    .fromTo(".philosophy-origami-video video",
+      { transform: "rotateX(6deg) rotateY(-6deg) scale(0.96)" },
+      {
+        transform: "rotateX(0deg) rotateY(0deg) scale(1)",
+        duration: 0.8,
+        ease: "power3.out"
+      },
+      0
+    )
+
+    /* content slides away */
+    .to(".philosophy-origami-content", {
+      xPercent: -120,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.inOut"
+    }, 0.2);
+
+  ScrollTrigger.create({
+    trigger: ".philosophy-origami",
+    start: "top top",
+    end: "+=1",
+    pin: true,
+    anticipatePin: 1,
+
+    onEnter: () => {
+      video.play();
+      origamiTL.play();
+    },
+
+    onLeaveBack: () => {
+      video.pause();
+      origamiTL.reverse();
+    }
+  });
+}
+
 
 // TEAM CURVED WAVE
 const stage = document.getElementById("teamTrigger");

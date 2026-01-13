@@ -317,11 +317,15 @@ header {
 #serviceTitle {
   font-size: clamp(70px, 9vw, 150px);
 }
+#serviceText{
+  line-height: 30px;
+}
 
 .tabs {
   display: flex;
   gap: 24px;
   margin: 20px 0;
+  font-size: 22px;
 }
 
 .tab {
@@ -394,7 +398,7 @@ header {
 .work-header p {
   color: #fff;
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
 }
@@ -970,3 +974,17 @@ header {
   .team-title { font-size: clamp(24px, 8vw, 32px); }
   h2 { font-size: clamp(22px, 7vw, 30px); text-align: center; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
