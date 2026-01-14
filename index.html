@@ -16,15 +16,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <!-- ScrollToPlugin-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollSmoother.min.js"></script>
+
 
 
 </head>
 
 <body>
- <div id="smooth-wrapper">
+ 
 <!-- PRELOADER -->
-<div id="preloader"><div></div></div>
+<div id="preloader">
+  <img src="./image/clogo.png" alt="Loading" class="preloader-logo">
+</div>
+
 
 <!-- HEADER -->
 <header>
@@ -56,22 +59,22 @@
   <div class="services-grid">
     <div class="services-panel">
       <video src="./video/brandv1.mp4" muted loop playsinline></video>
-      <span>Brand</span>
+      <span>CREATIVE</span>
     </div>
 
     <div class="services-panel">
-      <video src="./video/brandv1.mp4" muted loop playsinline></video>
-      <span>EXPERIENCE</span>
+      <video src="./video/brand-ex.mp4" muted loop playsinline></video>
+      <span>BRAND EXPERIENCE</span>
     </div>
 
     <div class="services-panel">
-      <video src="./video/brandv1.mp4" muted loop playsinline></video>
-      <span>SOCIAL</span>
+      <video src="./video/showreel.mp4" muted loop playsinline></video>
+      <span>DIGITAL</span>
     </div>
 
     <div class="services-panel">
-      <video src="./video/brandv1.mp4" muted loop playsinline></video>
-      <span>MERCHANDISE</span>
+      <video src="./video/product.mp4" muted loop playsinline></video>
+      <span>PRODUCT</span>
     </div>
   </div>
 </section>
@@ -82,10 +85,10 @@
 
   <!-- TOP SERVICE LIST (CLICKABLE FROM HERO / OTHER SECTIONS) -->
   <div class="service-cards">
-    <div class="service-card active" data-service="brand">Brand</div>
-    <div class="service-card" data-service="experience">Experience</div>
-    <div class="service-card" data-service="social">Social</div>
-    <div class="service-card" data-service="merch">Merchandise</div>
+    <div class="service-card active" data-service="brand">Creative</div>
+    <div class="service-card" data-service="experience">Brand Experience</div>
+    <div class="service-card" data-service="social">Digital </div>
+    <div class="service-card" data-service="merch">Product</div>
   </div>
 
   <!-- CONTENT GRID -->
@@ -93,7 +96,7 @@
 
     <!-- LEFT CONTENT -->
     <div class="service-content">
-      <h2 id="serviceTitle">Brand</h2>
+      <h2 id="serviceTitle">Creative</h2>
 
       <div class="tabs">
         <span class="tab active">Overview</span>
@@ -381,7 +384,7 @@ As an integrated creative agency, our Strategy team focuses on ideas to create b
 
   <ul class="location-list">
     <li data-city="Chennai, India"
-        data-address="123 Creative Street, Chennai, India">
+        data-address="Janaki Building, B1, 20,Sardar Patel Rd, next to GRT JEWELLERS, Adyar, Chennai, Tamil Nadu 600020">
         India
     </li>
 
@@ -439,6 +442,5 @@ As an integrated creative agency, our Strategy team focuses on ideas to create b
 
 
 <script src="./js/script.js"></script>
-</div>
 </body>
 </html>

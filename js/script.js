@@ -34,7 +34,7 @@ const heroSection = document.querySelector(".hero");
 
 if (heroContainer && heroSection) {
 
-  const text = "LET’S BUILD OUR BRAND";
+  const text = "LET’S BUILD YOUR BRAND";
   const spans = [];
   const h1 = document.createElement("h1");
 
@@ -123,17 +123,6 @@ if (heroContainer && heroSection) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* ================= SERVICES PAGE ANIMATIONS ================= */
 const servicesTitle = document.querySelector(".services-title");
 if(servicesTitle){
@@ -207,7 +196,7 @@ const serviceContent = {
       "We help you build and develop the right brand DNA* so you can tell your stories better to build reputation, trust and to win accolades. We are creative aficionados passionate about branding and creativity. As an integrated creative agency, our Strategy team focuses on ideas to create blueprints and our execution team brings the blueprint to life, transforming strategic plans to tangible realities. ",
     services:
       "Brand Strategy, Logo & Visual Identity, Brand Guidelines, Storytelling Workshops.",
-    video: "./showreel.mp4"
+    video: "./video/brandv1.mp4"
   },
 
   experience: {
@@ -215,8 +204,8 @@ const serviceContent = {
     overview:
       "We craft immersive brand events and experiences. Predominant time of our 35 years of cumulative experience has been in creating experiences that makes your brand be the talk of the town. Be it events, conferences, experiential campaigns, we know how to make an impact. We specialize in crafting immersive brand experiences and events that captivate audiences and elevate brand presence. From dynamic events and impactful conferences to innovative experiential campaigns, with over 35 years of cumulative experience, we ensure your brand becomes the focal point of conversation.",
     services:
-      "Experiential Events, Conferences, Retail Design, Interactive Campaigns.",
-    video: "./showreel.mp4"
+      "Consulting , Strategy, Creative ,Photography / Video, Event / Stall Design, Merchandise,Print / Digital ",
+    video: "./video/brand-ex.mp4"
   },
 
   social: {
@@ -224,8 +213,8 @@ const serviceContent = {
     overview:
       "Let us tell your stories better so you stand out in a cluttered noisy world. With our (seasoned) script writers and production team, we deliver exceptional creative concepts and social narrative that makes your brand stand out in the art and science of branding ",
     services:
-      "Social Media Campaigns, Content Creation, Influencer Marketing, Community Management.",
-    video: "./showreel.mp4"
+      "Campaign Strategy,Influencer marketing ,Digital Ads ,content creation (conception and production),Photo & Video,Live Production ,Check MONK-E services for digital ",
+    video: "./video/showreel.mp4"
   },
 
   merch: {
@@ -233,8 +222,8 @@ const serviceContent = {
     overview:
       "We specialise in capturing the essence and allure of your products with precision and artistry. Our high quality, meticulous creative services are designed to bring your brand’s vision to life through striking visuals and innovative concepts. ",
     services:
-      "Custom Merchandise, Apparel, Packaging Design, Branded Giveaways.",
-    video: "./showreel.mp4"
+      "Product Design,Prototype ,Product photography ,360 deg visuals ,Production? ",
+    video: "./video/product.mp4"
   }
 };
 
@@ -443,11 +432,8 @@ if(topBtn){
   window.addEventListener("scroll",()=>{window.scrollY>200?topBtn.classList.add("show"):topBtn.classList.remove("show");});
 }
 
-
-
-
-
-gsap.registerPlugin(ScrollTrigger);
+/*=========================*/
+/*====Philosophy section===*/
 
 const video = document.getElementById("philosophyVideo");
 
@@ -504,8 +490,9 @@ if (video) {
   });
 }
 
-
+//============================
 // TEAM CURVED WAVE
+//============================
 const stage = document.getElementById("teamTrigger");
 if(stage){
   stage.addEventListener("mouseenter",()=>stage.classList.add("active"));
