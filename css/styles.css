@@ -23,30 +23,74 @@ body {
 /* =================================================
    PRELOADER
 ================================================= */
-/* =================================================
-   PRELOADER
-================================================= */
-#preloader {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+/* ===== PRELOADER ===== */
+#preloader{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    z-index:9999;
+    transition:opacity .5s ease;
 }
 
-.preloader-logo {
-  width: 70px; /* adjust size */
-  height: auto;
-  animation: logoSpin 1.2s linear infinite;
-  filter: drop-shadow(0 0 12px rgba(217, 172, 71, 0.6));
+/* Logo */
+.logos{
+    width:130px;
+    margin-bottom:40px;
+    animation:spin 2s linear infinite;
 }
 
-@keyframes logoSpin {
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes spin{
+    to{ transform:rotate(360deg); }
+}
+
+/* ===== TEXT STYLE ===== */
+.loading-wrapper{
+    position:relative;
+    font-size:36px;
+    letter-spacing:6px;
+    font-weight:700;
+}
+
+/* Transparent Text with Gold Outline */
+.loading-outline{
+    color:transparent;
+    -webkit-text-stroke: 1px #d7ac49;
+}
+
+/* Gold Fill Layer */
+.loading-fill{
+    position:absolute;
+    left:0;
+    top:0;
+    width:0%;
+    overflow:hidden;
+    white-space:nowrap;
+    color:#d4af37;
+    animation:fill 2.5s ease-in-out infinite;
+}
+
+@keyframes fill{
+    0%{ width:0%; }
+    60%{ width:100%; }
+    100%{ width:0%; }
+}
+
+/* Hide */
+.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .loading-wrapper{
+        font-size:26px;
+        letter-spacing:4px;
+    }
 }
 
 /* =================================================

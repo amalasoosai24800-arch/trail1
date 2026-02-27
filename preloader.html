@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fast Loader</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:#000;
+    font-family:system-ui, -apple-system, sans-serif;
+}
+
+/* ===== PRELOADER ===== */
+#preloader{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    z-index:9999;
+    transition:opacity .5s ease;
+}
+
+/* Logo */
+.logo{
+    width:130px;
+    margin-bottom:40px;
+    animation:spin 2s linear infinite;
+}
+
+@keyframes spin{
+    to{ transform:rotate(360deg); }
+}
+
+/* ===== TEXT STYLE ===== */
+.loading-wrapper{
+    position:relative;
+    font-size:36px;
+    letter-spacing:6px;
+    font-weight:700;
+}
+
+/* Transparent Text with Gold Outline */
+.loading-outline{
+    color:transparent;
+    -webkit-text-stroke: 1px #d4af37;
+}
+
+/* Gold Fill Layer */
+.loading-fill{
+    position:absolute;
+    left:0;
+    top:0;
+    width:0%;
+    overflow:hidden;
+    white-space:nowrap;
+    color:#d4af37;
+    animation:fill 2.5s ease-in-out infinite;
+}
+
+@keyframes fill{
+    0%{ width:0%; }
+    60%{ width:100%; }
+    100%{ width:0%; }
+}
+
+/* Hide */
+.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .loading-wrapper{
+        font-size:26px;
+        letter-spacing:4px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="preloader">
+    <img src="image/Asset 7.svg" class="logo" alt="Company Logo">
+
+    <div class="loading-wrapper">
+        <div class="loading-outline">LOADING...</div>
+        <div class="loading-fill">LOADING...</div>
+    </div>
+</div>
+
+<script>
+window.addEventListener("load",function(){
+    document.getElementById("preloader").classList.add("hide");
+});
+</script>
+
+</body>
+</html>

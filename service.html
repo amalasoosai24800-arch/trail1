@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegans Services || Branding and Digital Advertising Agency in chennai</title>
+<meta name="description" content="Elegans is a creative branding agency offering premium brand identity, social media, and digital experiences. Build your brand with Elegans.">
+<meta name="keywords" content="Branding, Experience, Social Media, Merchandise, Premium Animation, 3D Effects">
+<meta name="author" content="Elegans Branding Agency">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elegans Services | Creative Branding Agency">
+<meta property="og:description" content="Learn about Elegans, a creative branding agency crafting premium brand identities and digital experiences.">
+<meta property="og:url" content="https://elegans.com/services/">
+<meta property="og:image" content="https://elegans.com/images/about-og.jpg">
+<meta property="og:site_name" content="Elegans">
+<meta property="og:locale" content="en_IN">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Creative Branding Agency | Elegans">
+<meta name="twitter:description" content="Premium branding, digital experiences, and social media solutions by Elegans.">
+<meta name="twitter:image" content="https://elegans.com/images/og-image.jpg">
+
+<link rel="canonical" href="https://elegans.com/services/">
+<link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="./css/ElegansServices.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="./image/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./image/favicon-16.png">
+<link rel="apple-touch-icon" href="./image/apple-touch-icon.png">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+
+<style>
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding-top: 80px ;
+    padding-bottom: 150px;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:60px;
+    position:relative;
+}
+
+.service-box{
+    text-align:center;
+    position:relative;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s ease;
+}
+
+/* Circle Icon */
+.icon-circle{
+    width:110px;
+    height:110px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+/* Half Border Effect */
+.icon-circle::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:8px solid #d7ac49;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+    transform:rotate(45deg);
+}
+
+/* Icon */
+.icon-circle img{
+    height: 50px;
+    width: 50px;
+}
+
+/* Title Label */
+.service-title{
+    display:inline-block;
+    padding:6px 20px;
+    margin:15px 0;
+    font-weight:bold;
+    border-radius:4px;
+}
+
+/* Different Colors */
+.service-box:nth-child(1) .service-title{ background:#d7ac49; }
+.service-box:nth-child(2) .service-title{ background:#d7ac49; }
+.service-box:nth-child(3) .service-title{ background:#d7ac49; }
+.service-box:nth-child(4) .service-title{ background:#d7ac49; }
+
+p{
+    font-size:15px;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+/* Dotted connector */
+.service-box:not(:first-child)::before{
+    content:"";
+    position:absolute;
+    top:55px;
+    left:-60px;
+    width:80px;
+    border-top:2px dashed rgba(255,255,255,0.6);
+}
+
+@media(max-width:768px){
+    .service-box::before{
+        display:none;
+    }
+}
+
+/* Hover Animation */
+.service-box:hover .icon-circle{
+    transform:scale(1.1);
+    transition:0.4s;
+}
+
+</style>
+</head>
+<body>
+<!-- PRELOADER -->
+<div id="preloader">
+  <img src="./image/Elegans_logo.png" alt="Loading" class="preloader-logo">
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><a href="index.html"><img src="./image/Elegans_logo.png" alt="Logo"></a></div>
+  <div class="header-actions">
+    <a href="contact.html" class="btn-talk">Let’s Talk</a>
+    <button class="menu-btn" id="menuBtn">MENU</button>
+  </div>
+  <div class="menu-popup" id="menuPopup">
+    <a href="index.html">Home</a>
+    <a href="aboutelegans.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="culture.html">Culture</a>
+  </div>
+</header>
+<section class="hero-section">
+  <img src="./image/servicesbg.jpg " class="hero-bg" alt="elegangs services "> <!-- change image name -->
+  <div class="hero-overlay"></div>
+
+  <div class="hero-container">
+
+    <div class="hero-content-left">
+      <h1>Our Services</h1>
+    </div>
+
+    <div class="hero-divider"></div>
+
+    <div class="hero-content-right">
+      <p>
+        We craft compelling brand identities that resonate, inspire trust, and make your business unforgettable.
+      </p>
+      <a href="contact.html" class="btn-appointment">Schedule Appointment</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<div class="container">
+    <div class="services">
+        <div class="service-box">
+            <div class="icon-circle">
+                
+                <img src="/image/creative.jpg">
+            </div>
+            <div class="service-title">Creative</div>
+            <p>Brand Strategy, Logo & Visual Identity, Brand Guidelines, Storytelling Workshops</p>
+        </div>
+
+        <div class="service-box">
+            <div class="icon-circle">
+                <img src="/image/brandex.jpg">
+            </div>
+            <div class="service-title">Brand Ex</div>
+            <p>Consulting , Strategy, Creative ,Photography / Video, Event / Stall Design, Merchandise,Print / Digital</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <!-- Column 1 – Brand -->
+    <div class="footer-brand">
+      <img src="./image/logo_elegans_tm.png" alt="ELEGANS Creative Branding Studio Logo" class="footer-logo">
+      <p class="footer-desc">
+        Creative branding studio delivering brand strategy, 
+        visual identity, digital campaigns, and 
+        storytelling for global brands.
+
+      </p>
+    </div>
+
+    <!-- Column 2 – Contact -->
+    <div class="footer-contact">
+      <h3>Contact</h3>
+      <p>
+        <strong>Email</strong><br>
+        <a href="mailto:contact@elegansinc.com">contact@elegansinc.com</a>
+      </p>
+      <p>
+        <strong>Phone</strong><br>
+        <a href="tel:+919176040552">+91 91760 40552</a>
+      </p>
+    </div>
+
+    <!-- Column 3 – Addresses -->
+    <!-- Column 3 – Locations -->
+<div class="footer-addresses">
+  <h3>Our Locations</h3>
+
+  <ul class="location-list">
+    <li data-city="Chennai, India"
+        data-address="B1, Janaki Building, No.20, Sardar Patel Rd
+Next to GRT Jewellers
+Adyar, Chennai - 600020">
+        India
+    </li>
+
+    <li data-city="Singapore"
+        data-address="45 Design Avenue, Singapore">
+        Dubai
+    </li>
+
+    <li data-city="London, UK"
+        data-address="124 City Road London EC1V 2NX, United Kingdom">
+        United Kingdom
+    </li>
+  </ul>
+</div>
+
+
+    <!-- Column 4 – Social -->
+    <div class="footer-social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/elegansinc/" target="_blank"  aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/elegansagency/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/elegansinc/" target="_blank" aria-label="FaceBook"><i class="fab fa-facebook"></i></a>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>© <span id="footerYear"></span> ELEGANS — All Rights Reserved</p>
+    <p>Creative Branding Studio | India • Dubai • UK</p>
+  </div>
+
+</footer>
+
+<!-- LOCATION POPUP -->
+<div id="location-popup" class="location-popup">
+  <div class="location-box">
+    
+    <span id="popup-close">×</span>
+
+    <h3 id="popup-city"></h3>
+    <p id="popup-address"></p>
+
+  </div>
+</div>
+
+
+<script src="./js/script.js"></script>
+<script src="./js/ElegansServices.js"></script>
+
+
+
+
+<script>
+const boxes = document.querySelectorAll('.service-box');
+
+window.addEventListener('scroll',()=>{
+    boxes.forEach(box=>{
+        const top = box.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50){
+            box.style.opacity="1";
+            box.style.transform="translateY(0)";
+        }
+    });
+});
+</script>
+</body>
+</html>

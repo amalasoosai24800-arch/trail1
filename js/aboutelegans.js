@@ -71,3 +71,23 @@ gsap.from(".df-why-inner > *", {
     start:"top 75%"
   }
 });
+
+
+
+
+
+
+
+gsap.from(".philosophy-value", {
+  scrollTrigger: {
+    trigger: ".philosophy-values",
+    start: "top 75%",
+  },
+  y: 90,
+  rotateX: -16,
+  opacity: 0,
+  stagger: 0.2,
+  duration: 1.1,
+  ease: "power4.out"
+});
+

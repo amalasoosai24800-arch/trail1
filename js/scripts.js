@@ -353,7 +353,7 @@ const serviceContent = {
       "We craft premium wearable storytelling—merchandise that merges culture, style and brand loyalty.",
     services:
       "Custom merchandise, Apparel & accessories, Packaging, Branded giveaways.",
-    video: "./showreel.mp4"
+    video: "./Product12.mp4"
   }
 };
 

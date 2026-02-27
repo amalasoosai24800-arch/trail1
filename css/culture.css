@@ -137,7 +137,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 120px 8% 80px; /* extra top so it's under header */
+  padding: 100px 8% 80px; /* extra top so it's under header */
   gap: 60px;
 }
 

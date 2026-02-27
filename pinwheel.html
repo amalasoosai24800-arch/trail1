@@ -1,0 +1,259 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Diagonal Pinwheel Services</title>
+
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== SECTION ===== */
+.services-pinwheel {
+  padding: 80px 20px;
+  background: black;
+  text-align: center;
+  color: #fff;
+}
+
+/* ===== WRAPPER ===== */
+.pinwheel-wrapper {
+  position: relative;
+  width: 1000PX;
+  height: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* ===== SERVICE BOXES ===== */
+.service-box {
+  position: absolute;
+  width: 420px;
+  min-height: 200px;
+  background: #2b2b2b;
+  padding: 30px 25px;
+  box-shadow: 0 5px 25px #d9ac47;
+  text-align: left;
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.service-box h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  color: #d9ac47;
+}
+
+.service-box p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.service-box:hover {
+  transform: scale(1.05);
+  background: #3a3a3a;
+}
+
+/* ===== SUB BOX ===== */
+.sub-box {
+  margin-top: 20px;
+  background: #3a3a3a;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* ===== ANIMATIONS FROM EACH SIDE ===== */
+
+/* TOP LEFT BOX */
+.top-left {
+  top: 50px;
+  left: 50px;
+  animation: slideTopLeft 1s forwards;
+}
+
+/* TOP RIGHT BOX */
+.top-right {
+  top: 50px;
+  right: 50px;
+  animation: slideTopRight 1s forwards 0.2s;
+}
+
+/* BOTTOM LEFT BOX */
+.bottom-left {
+  bottom: 50px;
+  left: 50px;
+  animation: slideBottomLeft 1s forwards 0.4s;
+}
+
+/* BOTTOM RIGHT BOX */
+.bottom-right {
+  bottom: 50px;
+  right: 50px;
+  animation: slideBottomRight 1s forwards 0.6s;
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes slideTopLeft {
+  0%   { top: -300px; left: -400px; opacity: 0; }
+  100% { top: 50px; left: 50px; opacity: 1; }
+}
+
+@keyframes slideTopRight {
+  0%   { top: -300px; right: -400px; opacity: 0; }
+  100% { top: 50px; right: 50px; opacity: 1; }
+}
+
+@keyframes slideBottomLeft {
+  0%   { bottom: -300px; left: -400px; opacity: 0; }
+  100% { bottom: 50px; left: 50px; opacity: 1; }
+}
+
+@keyframes slideBottomRight {
+  0%   { bottom: -300px; right: -400px; opacity: 0; }
+  100% { bottom: 50px; right: 50px; opacity: 1; }
+}
+
+/* ===== CENTER IMAGE ===== */
+.pinwheel-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.pinwheel-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.pinwheel-container:hover {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .pinwheel-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .service-box {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
+    min-height: auto;
+    animation: none;
+  }
+
+  .pinwheel-container {
+    position: static;
+    margin: 40px auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="services-pinwheel">
+
+  <div class="pinwheel-wrapper">
+
+    <!-- TOP LEFT -->
+    <div class="service-box top-left">
+      <h3>Creative</h3>
+      <p>As passionate creatives and an integrated
+agency, we blend strategy and
+execution—crafting bold ideas into blueprints
+and bringing them to life through impactful,
+real-world brand experiences. Our holistic
+approach ensures every brand touchpoint
+resonates and drives lasting impact.</p>
+      <div class="sub-box">
+        <strong>Services:</strong> Logo Design, Campaign Concept, Visual Identity
+      </div>
+    </div>
+
+    <!-- TOP RIGHT -->
+    <div class="service-box top-right">
+      <h3>Brand Experience</h3>
+      <p>With 35+ years of experience, we create
+immersive brand experiences that captivate and
+connect. From events and conferences to
+experiential campaigns, we spark conversations
+and drive engagement. Every touchpoint is
+crafted to amplify visibility and make your
+brand the talk of the town</p>
+      <div class="sub-box">
+        <strong>Services:</strong> Event Activation, Workshops, Exhibitions
+      </div>
+    </div>
+
+    <!-- BOTTOM LEFT -->
+    <div class="service-box bottom-left">
+      <h3>Product</h3>
+      <p>We specialise in capturing the essence and
+allure of your products with precision and
+artistry. Our high quality, meticulous creative
+services are designed to bring your brand’s
+vision to life through striking visuals and
+innovative concepts</p>
+      <div class="sub-box">
+        <strong>Services:</strong> Product Photography, Packaging Design, Mockups
+      </div>
+    </div>
+
+    <!-- BOTTOM RIGHT -->
+    <div class="service-box bottom-right">
+      <h3>Digital</h3>
+      <p>Let us tell your stories better so you stand out in
+a cluttered noisy world. With our (seasoned)
+script writers and production team, we deliver
+exceptional creative concepts and social
+narrative that makes your brand stand out in
+the art and science of branding.</p>
+      <div class="sub-box">
+        <strong>Services:</strong> Social Media, Website Content, Ads Campaigns
+      </div>
+    </div>
+
+    <!-- CENTER IMAGE -->
+    <div class="pinwheel-container">
+      <img src="./image/Elegans_logo.png" alt="Pinwheel Image">
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>   

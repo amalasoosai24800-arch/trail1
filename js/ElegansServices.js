@@ -19,6 +19,16 @@ cards.forEach(card => {
 });
 
 
+//=====================================
+//=========ICON PATTERN================
+const boxes = document.querySelectorAll('.service-box');
 
-/*===========================*/
-/*========WORK==========*/
+window.addEventListener('scroll',()=>{
+    boxes.forEach(box=>{
+        const top = box.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50){
+            box.style.opacity="1";
+            box.style.transform="translateY(0)";
+        }
+    });
+});

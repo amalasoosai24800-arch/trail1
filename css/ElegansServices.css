@@ -204,3 +204,105 @@
     margin: 20px 0;
   }
 }
+
+
+
+
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:60px;
+    position:relative;
+}
+
+.service-box{
+    text-align:center;
+    position:relative;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s ease;
+}
+
+/* Circle Icon */
+.icon-circle{
+    width:110px;
+    height:110px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+/* Half Border Effect */
+.icon-circle::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:8px solid #d7ac49;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+    transform:rotate(45deg);
+}
+
+/* Icon */
+.icon-circle img{
+    width:50px;
+    height: 50px;
+    color:black;
+}
+
+/* Title Label */
+.service-title{
+    display:inline-block;
+    padding:6px 20px;
+    margin:15px 0;
+    font-weight:bold;
+    border-radius:4px;
+}
+
+/* Different Colors */
+.service-box:nth-child(1) .service-title{ background:#d7ac49; }
+.service-box:nth-child(2) .service-title{ background:#d7ac49; }
+.service-box:nth-child(3) .service-title{ background:#d7ac49; }
+.service-box:nth-child(4) .service-title{ background:#d7ac49 }
+
+p{
+    font-size:15px;
+    line-height:1.6;
+    opacity:0.9;
+}
+
+/* Dotted connector */
+.service-box:not(:first-child)::before{
+    content:"";
+    position:absolute;
+    top:55px;
+    left:-60px;
+    width:80px;
+    border-top:2px dashed rgba(255,255,255,0.6);
+}
+
+@media(max-width:768px){
+    .service-box::before{
+        display:none;
+    }
+}
+
+/* Hover Animation */
+.service-box:hover .icon-circle{
+    transform:scale(1.1);
+    transition:0.4s;
+}

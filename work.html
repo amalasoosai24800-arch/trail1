@@ -3,10 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elegans Branding || Projects</title>
+<title>Elegans Branding || Creative Branding work</title>
 <meta name="description" content="Premium branding, experience, social, and merchandise services with cinematic scroll and 3D effects.">
 <meta name="keywords" content="Branding, Experience, Social Media, Merchandise, Premium Animation, 3D Effects">
-<meta name="author" content="Your Company Name">
+<meta name="author" content="Elegans Branding Agency">
+<!-- Open Graph Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Creative Branding Agency work | Elegans">
+<meta property="og:description" content="Elegans is a creative branding agency delivering premium brand identity, digital experiences, and social media solutions.">
+<meta property="og:url" content="https://elegans.com/work/">
+<meta property="og:image" content="https://elegans.com/images/og-image.jpg">
+<meta property="og:site_name" content="Elegans">
+<meta property="og:locale" content="en_IN">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Creative Branding Agency | Elegans">
+<meta name="twitter:description" content="Premium branding, digital experiences, and social media solutions by Elegans.">
+<meta name="twitter:image" content="https://elegans.com/images/og-image.jpg">
+
+<link rel="icon" type="image/png" sizes="32x32" href="./image/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./image/favicon-16.png">
+<link rel="apple-touch-icon" href="./image/apple-touch-icon.png">
+
+<link rel="canonical" href="https://elegans.com/work/">
 <link rel="stylesheet" href="./css/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -79,27 +98,6 @@
     .hero-section p { font-size:1.2rem; }
   }
 
-  #preloader {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:#fff;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-/* Optional: add a simple animation to the image (like scale or rotate) */
-#preloader img {
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-}
-
 /* CTA Button */
 .cta-btn {
   display: inline-block;
@@ -125,14 +123,19 @@
 
 <body>
  
-<!-- PRELOADER WITH IMAGE -->
+<!-- PRELOADER -->
 <div id="preloader">
-  <img src="./image/clogo.png" alt="Loading..." style="width:100px; height:auto;">
+    <img src="image/Elegans Branding_logo.svg" class="logos" alt="Company Logo">
+
+    <div class="loading-wrapper">
+        <div class="loading-outline">LOADING...</div>
+        <div class="loading-fill">LOADING...</div>
+    </div>
 </div>
 
 <!-- HEADER -->
 <header>
-  <div class="logo"><a href="index.html"><img src="./image/clogo.png" alt="Logo"></a></div>
+  <div class="logo"><a href="index.html"><img src="./image/Elegans_logo.png" alt="Logo"></a></div>
   <div class="header-actions">
     <a href="contact.html" class="btn-talk">Let’s Talk</a>
     <button class="menu-btn" id="menuBtn">MENU</button>
@@ -223,7 +226,7 @@
 
     <!-- Column 1 – Brand -->
     <div class="footer-brand">
-      <img src="./image/logo_elegans.png" alt="ELEGANS Creative Branding Studio Logo" class="footer-logo">
+      <img src="./image/logo_elegans_tm.png" alt="ELEGANS Creative Branding Studio Logo" class="footer-logo">
       <p class="footer-desc">
         Creative branding studio delivering brand strategy, 
         visual identity, digital campaigns, and 
@@ -237,11 +240,11 @@
       <h3>Contact</h3>
       <p>
         <strong>Email</strong><br>
-        <a href="mailto:hello@elegans.com">hello@elegans.com</a>
+        <a href="mailto:contact@elegansinc.com">contact@elegansinc.com</a>
       </p>
       <p>
         <strong>Phone</strong><br>
-        <a href="tel:+911234567890">+91 123 456 7890</a>
+        <a href="tel:+919176040552">+91 91760 40552</a>
       </p>
     </div>
 
@@ -252,17 +255,18 @@
 
   <ul class="location-list">
     <li data-city="Chennai, India"
-        data-address="123 Creative Street, Chennai, India">
+        data-address="B1, Janaki Building, 20,Sardar Patel Rd, next to GRT JEWELLERS, Adyar, Chennai, Tamil Nadu 600020">
         India
     </li>
 
-    <li data-city="Singapore"
+    <!--<li data-city="Singapore"
         data-address="45 Design Avenue, Singapore">
         Dubai
-    </li>
+    </li>-->
 
     <li data-city="London, UK"
-        data-address="78 Branding Road, London, United Kingdom">
+        data-address="124 City Road
+London EC1V 2NX, United Kingdom">
         United Kingdom
     </li>
   </ul>
@@ -285,7 +289,7 @@
   <!-- Bottom bar -->
   <div class="footer-bottom">
     <p>© <span id="footerYear"></span> ELEGANS — All Rights Reserved</p>
-    <p>Creative Branding Studio | India • Dubai • UK</p>
+    <p>Creative Branding Studio | India • UK</p>
   </div>
 
 </footer>

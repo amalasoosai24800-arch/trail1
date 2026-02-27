@@ -4,12 +4,9 @@ gsap.registerPlugin(ScrollTrigger);
 if(typeof ScrollToPlugin !== "undefined") gsap.registerPlugin(ScrollToPlugin);
 
 /* ================= PRELOADER ================= */
-const preloader = document.getElementById("preloader");
-if(preloader){
-  window.addEventListener("load", ()=>{
-    gsap.to(preloader, {opacity:0, duration:0.8, display:"none"});
-  });
-}
+window.addEventListener("load",function(){
+    document.getElementById("preloader").classList.add("hide");
+});
 
 /* ================= MENU ================= */
 const menuBtn = document.getElementById("menuBtn");
@@ -214,7 +211,7 @@ const serviceContent = {
       "Let us tell your stories better so you stand out in a cluttered noisy world. With our (seasoned) script writers and production team, we deliver exceptional creative concepts and social narrative that makes your brand stand out in the art and science of branding ",
     services:
       "Campaign Strategy,Influencer marketing ,Digital Ads ,content creation (conception and production),Photo & Video,Live Production ,Check MONK-E services for digital ",
-    video: "./video/showreel.mp4"
+    video: "./video/Social Page V2.mp4"
   },
 
   merch: {
@@ -223,7 +220,7 @@ const serviceContent = {
       "We specialise in capturing the essence and allure of your products with precision and artistry. Our high quality, meticulous creative services are designed to bring your brand’s vision to life through striking visuals and innovative concepts. ",
     services:
       "Product Design,Prototype ,Product photography ,360 deg visuals ,Production? ",
-    video: "./video/product.mp4"
+    video: "./video/Product12.mp4"
   }
 };
 
